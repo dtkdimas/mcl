@@ -9,7 +9,7 @@ class Component extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['year_id', 'category_id', 'component', 'iframe_src'];
+    protected $fillable = ['year_id', 'category_id', 'component', 'iframe_src', 'note'];
 
     // relasi
     public function Year()

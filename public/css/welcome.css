@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
 /* Menghilangkan scrollbar */
 ::-webkit-scrollbar {
     display: none; /* Untuk browser berbasis WebKit seperti Chrome, Safari */
@@ -5,27 +7,24 @@
 
 :root {
     --primary-color: #6e2cf3;
+    --bg-color: #eeeefa;
     --first-color: #f0e9fe;
-    --second-color: #3a2372;
+    --second-color: rgba(151, 71, 255, 0.05);
     --white-color: #ffffff;
     --black-color: #212529;
 }
 
-[data-theme="dark"] {
-    --primary-color: #6e2cf3;
-    --first-color: #3a2372;
-    --second-color: #f0e9fe;
-    --white-color: #212529;
-    --black-color: #ffffff;
-}
-
 body {
     margin: 0;
-    background-color: var(--white-color) !important;
+    background-color: var(--bg-color) !important;
 }
 
 .section {
     padding: 5rem 0 0;
+}
+
+a {
+    text-decoration: none;
 }
 
 ul {
@@ -40,26 +39,41 @@ li {
 }
 
 .navbar {
-    background: var(--primary-color);
+    background: linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 0.6) 34.5%,
+            rgba(0, 0, 0, 0) 100%
+        ),
+        url(../assets/bg-navbar.jpg), lightgray 50% / cover no-repeat;
+    background-size: cover;
+    background-position: center center;
 }
 
-.toggle-container {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
+.mycontainer {
+    padding-top: 32px;
+    padding-bottom: 32px;
 }
 
-.change-theme {
-    font-size: 1.25rem;
+.mycontainer h1 {
+    font-family: "Montserrat", sans-serif;
     color: #ffffff;
-    cursor: pointer;
+    font-size: 32px;
+    font-weight: 800;
+}
+
+.mycontainer p {
+    font-family: "Montserrat", sans-serif;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 0;
 }
 
 .bd-layout {
-    margin-top: 5rem;
+    margin-top: 2rem;
     display: grid;
     grid-template-areas: "sidebar main";
-    grid-template-columns: 1fr 5fr;
+    grid-template-columns: 1.5fr 4.5fr;
     gap: 1.5rem;
 }
 
@@ -74,21 +88,19 @@ li {
 .bd-sidebar {
     position: -webkit-sticky;
     position: sticky;
-    top: 5rem;
-    display: block !important;
-    height: calc(100vh - 6rem);
-    padding-left: 0.25rem;
-    margin-left: -0.25rem;
+    top: 2rem;
+    z-index: 1000;
+    height: calc(100vh - 56px);
     overflow-y: auto;
-    background: transparent;
 }
 
 .offcanvas-body {
     display: flex;
     flex-grow: 0;
-    padding: 0;
+    padding: 32px;
+    border-radius: 5px;
     overflow-y: visible;
-    background-color: transparent !important;
+    background-color: var(--white-color);
 }
 
 .bd-main {
@@ -100,8 +112,7 @@ li {
 }
 
 .accordion-body {
-    /* padding-top: ; */
-    padding-right: 0;
+    padding: 8px 0;
 }
 
 .accordion-item {
@@ -110,13 +121,20 @@ li {
 }
 
 .accordion-button {
-    /* padding: 10px 5px; */
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    padding: 10px 16px;
+    border-radius: 8px;
     color: var(--black-color);
     background-color: var(--white-color);
 }
 
+.accordion-button:hover {
+    color: var(--primary-color);
+}
+
 .accordion-button:not(.collapsed) {
-    color: var(--black-color);
+    color: var(--primary-color);
     background-color: var(--first-color);
     box-shadow: none;
 }
@@ -125,20 +143,42 @@ li {
     box-shadow: none;
 }
 
+.item-child {
+    background-color: var(--second-color) !important;
+    margin-bottom: 8px;
+    border-radius: 8px;
+}
+
+.item-child.none {
+    display: none;
+}
+
+.btn-child:not(.collapsed) {
+    background-color: var(--second-color);
+}
+
+.btn-child {
+    padding: 10px 16px 10px 24px;
+}
+
+.body-child {
+    padding: 10px 16px 10px 32px;
+}
+
+.body-child ul {
+    padding: 10px 16px 10px 0px;
+}
+
 .body-child a {
+    font-family: "Montserrat", sans-serif;
     color: var(--black-color);
-    font-size: 600;
-    padding: 3px 5px;
-    border-radius: 5px;
+    font-weight: 600;
 }
 
 .body-child a:hover {
-    color: var(--black-color);
-    background: var(--first-color);
-    text-decoration: none;
+    color: var(--primary-color);
 }
 
-a.link.active {
-    font-weight: bold;
-    background: var(--first-color);
+.body-child a.link.active {
+    color: var(--primary-color);
 }

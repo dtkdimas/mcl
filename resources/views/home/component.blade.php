@@ -98,13 +98,13 @@
                         <label for="component">Input component</label>
                         <input type="text" class="form-control" name="component" id="component"
                             value="{{ old('component') }}">
-                        {{-- @error('component')
-                            <p class="mt-1 text-danger">{{ $message }}</p>
-                        @enderror --}}
                         <div class="mt-3"></div>
                         <label for="iframe_src">Input Source iframe</label>
                         <input type="text" class="form-control" name="iframe_src" id="iframe_src"
                             value="{{ old('iframe_src') }}">
+                        <div class="mt-3"></div>
+                        <label for="note">Additional Note</label>
+                        <textarea class="form-control" name="note" id="note">{{ old('note') }}</textarea>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -148,6 +148,9 @@
                         <div class="mt-3"></div>
                         <label for="iframe_src">Source iframe</label>
                         <textarea class="form-control" name="iframe_src" id="iframe_src" readonly>{{ $componentItem->iframe_src }}</textarea>
+                        <div class="mt-3"></div>
+                        <label for="note">Additional Note</label>
+                        <textarea class="form-control" name="note" id="note" readonly>{{ $componentItem->note }}</textarea>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -199,6 +202,9 @@
                             <label for="iframe_src">Input Source iframe</label>
                             <input type="text" class="form-control" name="iframe_src" id="iframe_src"
                                 value="{{ $componentItem->iframe_src }}">
+                            <div class="mt-3">Additional Note</div>
+                            <label for="note"></label>
+                            <textarea class="form-control" name="note" id="note">{{ $componentItem->note }}</textarea>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

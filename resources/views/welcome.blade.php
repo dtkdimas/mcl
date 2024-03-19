@@ -16,45 +16,28 @@
     {{-- import css --}}
     <link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
 
-    <!-- Custom fonts for this template -->
-    <link href="{{ asset('template/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="{{ asset('template/css/sb-admin-2.min.css') }}" rel="stylesheet">
-
-    <!-- Custom styles for this page -->
-    <link href="{{ asset('template/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
-
 </head>
 
 <body data-theme="light">
     <!-- Topbar -->
-    <nav class="navbar navbar-expand navbar-light topbar fixed-top static-top shadow px-0">
+    <nav class="navbar bg-body-tertiary">
         <div class="container-xxl bd-gutter">
-            <!-- Sidebar Toggle (Topbar) -->
-            <form class="form-inline">
-                <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                    <i class="fa fa-bars text-white"></i>
-                </button>
-            </form>
 
-            <a class="d-flex align-items-center justify-content-center" href="">
-                <div class="text-white fw-bold text-uppercase">Microsite</div>
-            </a>
+            <div class="d-flex align-items-center justify-content-center">
+                <div class="container mycontainer">
+                    <div class="row">
+                        <div class="col-12">
+                            <h1>Microsite Component Library</h1>
+                            <p>Standards microsite component sets used in projects</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <!-- Topbar Navbar -->
             <ul class="navbar-nav ml-auto">
 
-                <div class="toggle-container" onClick="toggleDarkMode()">
-                    <div class="toggle-circle" id="darkModeToggle">
-                        <i class="bx bx-sun change-theme"></i>
-                    </div>
-                </div>
-
-                <div class="topbar-divider d-none d-sm-block"></div>
+                {{-- <div class="topbar-divider d-none d-sm-block"></div> --}}
 
                 <!-- Nav Item - User Information -->
                 <a class="">
@@ -71,37 +54,13 @@
     <div class="container-xxl bd-gutter bd-layout">
         <aside class="bd-sidebar">
             <div class="offcanvas-body flex-column">
-                {{-- <ul>
-                    @foreach ($years as $year)
-                        <li>
-                            <h4 class="fw-bold">{{ $year->year }}</h4>
-                            <ul>
-                                @foreach ($year->categories as $category)
-                                    <li>
-                                        <h5 class="fw-semibold">{{ $category->category }}</h5>
-                                        <ul>
-                                            @foreach ($category->components as $component)
-                                                <li>
-                                                    <a href="#"
-                                                        onclick="loadIframe('{{ $component->iframe_src }}','{{ $component->component }}')">{{ $component->component }}</a>
-                                                </li>
-                                            @endforeach
-                                        </ul>
-                                    </li>
-                                    <div class="mb-3"></div>
-                                @endforeach
-                            </ul>
-                        </li>
-                        <div class="mb-4"></div>
-                    @endforeach
-                </ul> --}}
                 @foreach ($years as $year)
                     <div class="accordion w-100" id="accordionPanelsStayOpenExample">
                         <div class="accordion-item item-parent">
                             <h2 class="accordion-header header-parent">
-                                <button class="accordion-button btn-parent fw-bold" type="button"
-                                    data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-{{ $year->year }}"
-                                    aria-expanded="true" aria-controls="panelsStayOpen-{{ $year->year }}">
+                                <button class="accordion-button btn-parent" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#panelsStayOpen-{{ $year->year }}" aria-expanded="true"
+                                    aria-controls="panelsStayOpen-{{ $year->year }}">
                                     {{ $year->year }}
                                 </button>
                             </h2>
@@ -111,8 +70,8 @@
                                     @foreach ($year->categories as $category)
                                         <div class="accordion-item item-child">
                                             <h2 class="accordion-header header-child">
-                                                <button class="accordion-button collapsed btn-child fw-bold"
-                                                    type="button" data-bs-toggle="collapse"
+                                                <button class="accordion-button collapsed btn-child" type="button"
+                                                    data-bs-toggle="collapse"
                                                     data-bs-target="#panelsStayOpen-{{ $category->id }}"
                                                     aria-expanded="true"
                                                     aria-controls="panelsStayOpen-{{ $category->id }}">
@@ -126,7 +85,7 @@
                                                         <ul>
                                                             <li>
                                                                 <a href="#" class="link"
-                                                                    onclick="loadIframe('{{ $component->iframe_src }}','{{ $component->component }}')">{{ $component->component }}</a>
+                                                                    onclick="loadIframe('{{ $component->iframe_src }}','{{ $component->component }}','{{ $component->note }}')">{{ $component->component }}</a>
                                                             </li>
                                                         </ul>
                                                     @endforeach
@@ -143,6 +102,10 @@
         </aside>
         <main class="bd-main order-1 iframe-container">
             <h1 id="iframe-header" class="fw-bold">Get started with Microsite Component Library</h1>
+            <p id="iframe-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maiores ipsam totam sequi
+                facilis dolores, dolorem dolore nostrum ab velit, quibusdam sed voluptatibus, aliquid praesentium cum
+                ullam explicabo culpa. Reiciendis deleniti ab alias optio fuga libero molestias eos. Velit explicabo
+                distinctio, laborum aspernatur iusto, odio eius ad delectus vero magnam itaque?</p>
             <iframe id="iframe-content"
                 src="https://codepen.io/Dimas-Septiandi-the-solid/embed/xxQebeX?default-tab=html%2Cresult"
                 width="100%" height="500" frameborder="0"></iframe>
@@ -170,19 +133,6 @@
     <script src="{{ asset('template/js/demo/datatables-demo.js') }}"></script>
 
     <script>
-        function toggleDarkMode() {
-            var body = document.querySelector("body");
-            var darkmode = body.getAttribute("data-theme") === "dark";
-
-            if (darkmode) {
-                body.setAttribute("data-theme", "light");
-                document.getElementById("darkModeToggle").innerHTML = '<i class="bx bx-sun change-theme"></i>';
-            } else {
-                body.setAttribute("data-theme", "dark");
-                document.getElementById("darkModeToggle").innerHTML = '<i class="bx bx-moon change-theme"></i>';
-            }
-        }
-
         document.addEventListener("DOMContentLoaded", function() {
             // Mengambil semua elemen accordion
             var accordionItems = document.querySelectorAll('.item-parent');
@@ -227,9 +177,27 @@
             });
         });
 
-        function loadIframe(src, componentName) {
+        // Penanganan jika kolom kategori tidak memiliki komponen maka akan tidak didisplay
+        document.addEventListener("DOMContentLoaded", function() {
+            var itemChildren = document.querySelectorAll('.item-child');
+            itemChildren.forEach(function(itemChild) {
+                var components = itemChild.querySelectorAll('.link');
+                var isEmpty = true;
+                components.forEach(function(component) {
+                    if (component.innerText.trim() !== '') {
+                        isEmpty = false;
+                    }
+                });
+                if (isEmpty) {
+                    itemChild.classList.add('none');
+                }
+            });
+        });
+
+        function loadIframe(src, componentName, note) {
             document.getElementById('iframe-content').src = src;
             document.getElementById('iframe-header').innerText = componentName;
+            document.getElementById('iframe-text').innerText = note || '';
         }
     </script>
 </body>

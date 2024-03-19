@@ -53,6 +53,7 @@ class ComponentController extends Controller
             'category_id' => 'required',
             'component' => 'required',
             'iframe_src' => 'required',
+            'note' => 'nullable', 
         ]);
 
         // Memeriksa apakah ada component dengan kombinasi data yang sama
@@ -80,6 +81,7 @@ class ComponentController extends Controller
             'category_id' => 'required',
             'component' => 'required',
             'iframe_src' => 'required',
+            'note' => 'nullable', 
         ]);
 
         // Memeriksa apakah ada component dengan kombinasi data yang sama
@@ -87,6 +89,7 @@ class ComponentController extends Controller
             ->where('category_id', $data['category_id'])
             ->where('component', $data['component'])
             ->where('iframe_src', $data['iframe_src'])
+            ->where('note', $data['note'])
             ->exists();
 
         // Jika ada component dengan nama yang sama dan category_id yang sama, kembalikan pesan kesalahan
