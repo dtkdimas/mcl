@@ -11,7 +11,7 @@ class WelcomeController extends Controller
 {
     public function index()
     {
-        $years = Year::with('categories.components')->latest()->get();
+        $years = Year::with('categories.components')->orderBy('year', 'desc')->get();
         return view('welcome', compact('years'));
     }
 }
