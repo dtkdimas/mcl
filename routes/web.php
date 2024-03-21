@@ -20,9 +20,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['middleware' => 'guest'], function () {
-    // Route::get('/', function () {
-    //     return view('welcome');
-    // });
     Route::resource('/', WelcomeController::class);
     Route::get('/register', [AuthController::class, 'register'])->name('register');
     Route::post('/register', [AuthController::class, 'registerPost'])->name('register');
