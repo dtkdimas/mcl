@@ -34,5 +34,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/year', YearController::class);
     Route::resource('/category', CategoryController::class);
     Route::resource('/component', ComponentController::class);
-    Route::get('/get-categories', [ComponentController::class, 'getCategories'])->name('get.categories');
+    Route::get('/component', [ComponentController::class, 'index'])->name('home.component');
+    Route::get('/getCategory/{id}', [ComponentController::class, 'category']);
 });

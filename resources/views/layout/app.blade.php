@@ -11,6 +11,7 @@
 
     <title>@yield('title')</title>
 
+    @yield('css')
     {{-- import css --}}
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 

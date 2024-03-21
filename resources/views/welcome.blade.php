@@ -40,11 +40,11 @@
                 {{-- <div class="topbar-divider d-none d-sm-block"></div> --}}
 
                 <!-- Nav Item - User Information -->
-                <a class="">
+                {{-- <a class="">
                     <form action="{{ route('login') }}">
                         <button class="btn btn-outline-light fw-semibold" type="submit">Login</button>
                     </form>
-                </a>
+                </a> --}}
 
             </ul>
         </div>

@@ -14,8 +14,29 @@ class ComponentController extends Controller
         $component = Component::with('year', 'category')
             ->latest()
             ->get();
+        
+        return view('home.component', compact('component'));
+    }
 
+    public function category($id)
+    {
+        $data = Category::where('year_id', $id)
+            ->where('category', 'LIKE', '%'.request('q').'%')
+            ->paginate(10);
+        
+        return response()->json($data);
+    }
+
+    public function create()
+    {
+        $year = Year::all();
+        return view('components.create', compact('year'));
+    }
+
+    public function edit($id)
+    {
         $years = Year::all();
+        $component = Component::findOrFail($id);
 
         // Membuat array asosiatif untuk menyimpan kategori berdasarkan tahun
         $categoriesByYear = [];
@@ -23,26 +44,13 @@ class ComponentController extends Controller
         foreach ($years as $year) {
             $categoriesByYear[$year->id] = Category::where('year_id', $year->id)->get();
         }
-        
-        return view('home.component', [
-            'component' => $component,
+
+        return view('components.edit', [
             'year' => $years,
+            'component' => $component,
             'category' => Category::all(),
             'categoriesByYear' => $categoriesByYear,
         ]);
-    }
-
-    public function getCategories(Request $request)
-    {
-        $year_id = $request->input('year_id');
-        $categories = Category::where('year_id', $year_id)->get();
-
-        $options = '<option value="" hidden>Choose</option>';
-        foreach ($categories as $category) {
-            $options .= '<option value="' . $category->id . '">' . $category->category . '</option>';
-        }
-
-        return $options;
     }
 
 
@@ -71,7 +79,7 @@ class ComponentController extends Controller
         //tambahkan component
         Component::create($data);
     
-        return back()->with('success', 'Component added successfully!');
+        return redirect()->route('home.component')->with('success', 'Component added successfully!');
     }
 
     public function update(Request $request, string $id)
