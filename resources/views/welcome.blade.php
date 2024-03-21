@@ -112,6 +112,12 @@
         </main>
     </div>
 
+    <footer>
+        <div class="footer-wrapper">
+            <h1>Component Library - Made for Detikcom Frontend Designer Team</h1>
+        </div>
+    </footer>
+
     <!-- Bootstrap core JavaScript-->
     <script src="{{ asset('template/vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('template/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -194,6 +200,7 @@
             });
         });
 
+        //untuk load halaman dengan source component yang dipilih
         function loadIframe(src, componentName, note) {
             document.getElementById('iframe-content').src = src;
             document.getElementById('iframe-header').innerText = componentName;

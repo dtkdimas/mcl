@@ -92,33 +92,3 @@
         </div>
     @endforeach
 @endsection
-
-@section('js')
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $("#year_id").change(function() {
-                let id = $("#year_id").val();
-
-                $("#category_id").select2({
-                    placeholder: 'Choose',
-                    ajax: {
-                        url: "{{ url('getCategory') }}/" + id,
-                        processResults: function({
-                            data
-                        }) {
-                            return {
-                                results: $.map(data, function(item) {
-                                    return {
-                                        id: item.id,
-                                        text: item.category,
-                                    }
-                                })
-                            }
-                        }
-                    }
-                })
-            })
-        });
-    </script>
-@endsection

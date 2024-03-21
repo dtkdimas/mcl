@@ -161,7 +161,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Microsite Detikcom 2024</span>
+                        <span>Component Library - Made for Detikcom Frontend Designer Team</span>
                     </div>
                 </div>
             </footer>
