@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Year;
 use App\Models\Category;
 use App\Models\Component;
@@ -14,7 +15,9 @@ class HomeController extends Controller
         $componentCount = Component::count();
         $categoryCount = Category::count();
         $yearCount = Year::count();
+        $userCount = User::count();
         return view('home.dashboard',[
+            'user' => $userCount,
             'year' => $yearCount,
             'category' => $categoryCount,
             'component' => $componentCount

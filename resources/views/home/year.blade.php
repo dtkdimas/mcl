@@ -78,6 +78,7 @@
                     </div>
                     <div class="modal-body">
                         <label for="year">Input year</label>
+                        <span class="text-danger">*</span>
                         <input type="text" class="form-control" name="year" id="year"
                             value="{{ old('year') }}">
                     </div>
@@ -105,6 +106,7 @@
                         </div>
                         <div class="modal-body">
                             <label for="year">Input year</label>
+                            <span class="text-danger">*</span>
                             <input type="text" class="form-control" name="year" id="year"
                                 value="{{ $item->year }}">
                         </div>

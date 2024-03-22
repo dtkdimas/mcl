@@ -80,6 +80,7 @@
                     </div>
                     <div class="modal-body">
                         <label for="year_id" class="font-semibold">Year</label>
+                        <span class="text-danger">*</span>
                         <select name="year_id" id="year_id" class="form-select">
                             <option value="" hidden>Choose</option>
                             @foreach ($year as $item)
@@ -88,6 +89,7 @@
                         </select>
                         <div class="mt-3"></div>
                         <label for="category">Input category</label>
+                        <span class="text-danger">*</span>
                         <input type="text" class="form-control" name="category" id="category"
                             value="{{ old('category') }}">
                         {{-- @error('category')
@@ -118,6 +120,7 @@
                         </div>
                         <div class="modal-body">
                             <label for="year_id" class="font-semibold">Year</label>
+                            <span class="text-danger">*</span>
                             <select name="year_id" id="year_id" class="form-select">
                                 {{-- <option value="" hidden>Choose</option> --}}
                                 @foreach ($year as $yearItem)
@@ -128,6 +131,7 @@
                             </select>
                             <div class="mt-3"></div>
                             <label for="category">Input category</label>
+                            <span class="text-danger">*</span>
                             <input type="text" class="form-control" name="category" id="category"
                                 value="{{ $categoryItem->category }}">
                         </div>
