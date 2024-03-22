@@ -80,9 +80,6 @@
                         <label for="year">Input year</label>
                         <input type="text" class="form-control" name="year" id="year"
                             value="{{ old('year') }}">
-                        {{-- @error('year')
-                            <p class="mt-1 text-danger">{{ $message }}</p>
-                        @enderror --}}
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

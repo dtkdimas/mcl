@@ -7,3 +7,7 @@
     ) !important;
     background-size: cover;
 }
+
+.sidebar-divider {
+    border-top: 1px solid #fff !important;
+}
