@@ -46,6 +46,7 @@ class AuthController extends Controller
         ];
 
         if(Auth::attempt($credetials)){
+            activity()->causedBy(Auth::user())->log(auth()->user()->name . ' has logged in');
             return redirect('/home');
         }
         return back()->with('error', 'Incorrect email or password');
