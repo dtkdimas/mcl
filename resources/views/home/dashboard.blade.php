@@ -86,10 +86,49 @@
         <div class="col">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Projects</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Log Activity</h6>
                 </div>
                 <div class="card-body">
-                    <h4 class="small font-weight-bold">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr class="">
+                                <th>No</th>
+                                <th>User</th>
+                                <th>Event</th>
+                                <th>Before</th>
+                                <th>After</th>
+                                <th>Description</th>
+                                <th>Log At</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $no = 1; ?>
+                            @foreach ($log as $item)
+                                <tr class="">
+                                    <td>{{ $no++ }}</td>
+                                    <td>{{ $item->causer->name }}</td>
+                                    <td>{{ $item->event }}</td>
+                                    <td style="max-width: 300px">
+                                        @if (@is_array($item->changes['old']))
+                                            @foreach ($item->changes['old'] as $key => $itemChange)
+                                                {{ $key }} : {{ $itemChange }} </br>
+                                            @endforeach
+                                        @endif
+                                    </td>
+                                    <td style="max-width: 300px">
+                                        @if (@is_array($item->changes['attributes']))
+                                            @foreach ($item->changes['attributes'] as $key => $itemChange)
+                                                {{ $key }} : {{ $itemChange }} </br>
+                                            @endforeach
+                                        @endif
+                                    </td>
+                                    <td>{{ $item->description }}</td>
+                                    <td>{{ $item->created_at }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    {{-- <h4 class="small font-weight-bold">
                         Server Migration <span class="float-right">20%</span>
                     </h4>
                     <div class="progress mb-4">
@@ -123,7 +162,7 @@
                     <div class="progress">
                         <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100"
                             aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

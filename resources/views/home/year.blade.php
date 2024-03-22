@@ -34,7 +34,7 @@
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
-                        <tr class="text-center">
+                        <tr class="">
                             <th>No</th>
                             <th>Year</th>
                             <th>Created at</th>
@@ -45,7 +45,7 @@
                     <tbody>
                         <?php $no = 1; ?>
                         @foreach ($year as $item)
-                            <tr class="text-center">
+                            <tr class="">
                                 <td>{{ $no++ }}</td>
                                 <td>{{ $item->year }}</td>
                                 <td>{{ $item->created_at }}</td>

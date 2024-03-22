@@ -7,6 +7,7 @@ use App\Models\Year;
 use App\Models\Category;
 use App\Models\Component;
 use Illuminate\Http\Request;
+use Spatie\Activitylog\Models\Activity;
 
 class HomeController extends Controller
 {
@@ -20,7 +21,8 @@ class HomeController extends Controller
             'user' => $userCount,
             'year' => $yearCount,
             'category' => $categoryCount,
-            'component' => $componentCount
+            'component' => $componentCount,
+            'log' => Activity::orderBy('id', 'desc')->get(),
         ]);
     }
 }
