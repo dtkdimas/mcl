@@ -50,7 +50,7 @@
                                 <td>{{ $item->Year->year }}</td>
                                 <td>{{ $item->Category->category }}</td>
                                 <td>{{ $item->component }}</td>
-                                <td>
+                                <td class="text-center">
                                     <a href="{{ route('component.edit', $item->id) }}" class="btn btn-warning btn-sm"><i
                                             class="fas fa-edit"></i>
                                         Edit</a>

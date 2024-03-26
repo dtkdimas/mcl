@@ -64,7 +64,7 @@
             <textarea class="form-control" name="note" id="note">{{ $component->note }}</textarea>
         </div>
         <div class="modal-footer">
-            <button class="btn btn-primary" type="submit">Create</button>
+            <button class="btn btn-primary" type="submit">Update</button>
         </div>
     </form>
 @endsection

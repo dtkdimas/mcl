@@ -52,7 +52,7 @@
                                 <td>{{ $item->category }}</td>
                                 <td>{{ $item->created_at }}</td>
                                 <td>{{ $item->updated_at }}</td>
-                                <td>
+                                <td class="text-center">
                                     <a href="#" class="btn btn-warning btn-sm" data-bs-toggle="modal"
                                         data-bs-target="#editModal-{{ $item->id }}"><i class="fas fa-edit"></i> Edit</a>
                                     <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal"

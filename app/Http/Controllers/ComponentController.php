@@ -108,7 +108,7 @@ class ComponentController extends Controller
         // Update kategori
         Component::find($id)->update($data);
     
-        return back()->with('success', 'Component updated successfully!');
+        return redirect()->route('home.component')->with('success', 'Component updated successfully!');
     }
 
     public function destroy(string $id)
