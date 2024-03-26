@@ -54,6 +54,9 @@
     <div class="container-xxl bd-gutter bd-layout">
         <aside class="bd-sidebar">
             <div class="offcanvas-body flex-column">
+                <div class="navigation-wrapper d-flex justify-content-between align-items-center">
+                    <h5 class="nav-title">Navigation</h5><i class='bx bx-menu bx-sm'></i>
+                </div>
                 @foreach ($years as $year)
                     <div class="accordion w-100" id="accordionPanelsStayOpenExample">
                         <div class="accordion-item item-parent">
@@ -206,6 +209,25 @@
             document.getElementById('iframe-header').innerText = componentName;
             document.getElementById('iframe-text').innerText = note || '';
         }
+
+        //untuk sidebar responsive
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuIcon = document.querySelector('.bx-menu');
+            const layoutContainer = document.querySelector('.bd-layout');
+            const accordion = document.querySelectorAll('.accordion');
+            const navigationWrapper = document.querySelector('.navigation-wrapper');
+            const navigationTitle = document.querySelector('.nav-title');
+
+            menuIcon.addEventListener('click', function() {
+                layoutContainer.classList.toggle('bd-layout-responsive');
+                accordion.forEach(item => {
+                    item.classList.toggle('accordion-responsive');
+                });
+                navigationWrapper.classList.toggle('nav-wrapper-responsive')
+                navigationTitle.classList.toggle('nav-title-responsive');
+
+            });
+        });
     </script>
 </body>
 

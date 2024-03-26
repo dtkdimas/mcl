@@ -73,8 +73,9 @@ li {
     margin-top: 2rem;
     display: grid;
     grid-template-areas: "sidebar main";
-    grid-template-columns: 1.5fr 4.5fr;
+    grid-template-columns: 1fr 5fr;
     gap: 1.5rem;
+    transition: 0.5s ease;
 }
 
 .bd-gutter {
@@ -107,6 +108,26 @@ li {
     grid-area: main;
 }
 
+.navigation-wrapper {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    border-radius: 5px;
+    padding: 10px 14px;
+    margin-bottom: 8px;
+    background-color: #6e2cf3;
+}
+
+.navigation-wrapper h5 {
+    font-size: 0.9rem;
+    color: white;
+    margin-bottom: 0;
+}
+
+.navigation-wrapper i {
+    color: white;
+    cursor: pointer;
+}
+
 .accordion-item {
     border: none;
 }
@@ -122,6 +143,7 @@ li {
 
 .accordion-button {
     font-family: "Montserrat", sans-serif;
+    font-size: 0.9rem;
     font-weight: 600;
     padding: 10px 16px;
     border-radius: 8px;
@@ -162,7 +184,7 @@ li {
 }
 
 .body-child {
-    padding: 10px 16px 10px 32px;
+    padding: 10px 0px 10px 32px;
 }
 
 .body-child ul {
@@ -171,6 +193,7 @@ li {
 
 .body-child a {
     font-family: "Montserrat", sans-serif;
+    font-size: 0.9rem;
     color: var(--black-color);
     font-weight: 600;
 }
@@ -198,4 +221,21 @@ footer {
     color: var(--white-color);
     margin-bottom: 0;
     padding: 10px 64px;
+}
+
+/* Interactive css */
+.bd-layout-responsive {
+    grid-template-columns: 0.5fr 5.5fr;
+}
+
+.accordion-responsive {
+    display: none;
+}
+
+.nav-wrapper-responsive {
+    padding: 8px;
+}
+
+.nav-title-responsive {
+    display: none;
 }
