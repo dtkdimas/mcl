@@ -64,6 +64,7 @@
             <textarea class="form-control" name="note" id="note">{{ $component->note }}</textarea>
         </div>
         <div class="modal-footer">
+            <a href="{{ url('component') }}" class="btn btn-secondary">Cancel</a>
             <button class="btn btn-primary" type="submit">Update</button>
         </div>
     </form>

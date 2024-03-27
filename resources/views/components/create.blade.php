@@ -56,6 +56,7 @@
             <textarea class="form-control" name="note" id="note">{{ old('note') }}</textarea>
         </div>
         <div class="modal-footer">
+            <a href="{{ url('component') }}" class="btn btn-secondary">Cancel</a>
             <button class="btn btn-primary" type="submit">Create</button>
         </div>
     </form>
