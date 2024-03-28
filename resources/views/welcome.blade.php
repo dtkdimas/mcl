@@ -142,6 +142,7 @@
     <script src="{{ asset('template/js/demo/datatables-demo.js') }}"></script>
 
     <script>
+        //logic untuk membuat accordion pertama show
         document.addEventListener("DOMContentLoaded", function() {
             // Mengambil semua elemen accordion
             var accordionItems = document.querySelectorAll('.item-parent');
@@ -152,22 +153,26 @@
 
                 // Jika ada elemen collapse dan ini adalah iterasi pertama
                 if (collapse && index === 0) {
-                    collapse.classList.add('show'); // Tambahkan kelas 'show'
+                    collapse.classList.add('show');
                 }
             });
         });
 
+        //logic untuk mengatur button parent accordion menjadi tidak aktif setelah accordion pertama
         document.addEventListener("DOMContentLoaded", function() {
             // Mengambil semua elemen button accordion
             var accordionButtons = document.querySelectorAll('.btn-parent');
 
-            // Menambahkan kelas 'collapsed' pada button di iterasi terakhir
-            var lastAccordionButton = accordionButtons[accordionButtons.length - 1];
-            if (lastAccordionButton) {
-                lastAccordionButton.classList.add('collapsed');
-            }
+            // Iterasi melalui semua button accordion
+            accordionButtons.forEach(function(button, index) {
+                // Jika bukan iterasi pertama, tambahkan kelas 'collapsed'
+                if (index > 0) {
+                    button.classList.add('collapsed');
+                }
+            });
         });
 
+        //logic untuk menambahkan active pada link dibody accordion
         document.addEventListener("DOMContentLoaded", function() {
             var links = document.querySelectorAll(
                 '.link'); // Mengambil semua elemen tautan dengan kelas 'fw-semibold'
