@@ -120,6 +120,7 @@
             <div class="sidebar-background"></div>
             <div class="sidebar-wrapper scrollbar-inner">
                 <div class="sidebar-content">
+                    <hr class="divider my-0">
                     <ul class="nav">
                         <li class="nav-item active" id="dashboard">
                             <a href="{{ url('home') }}">
@@ -129,7 +130,6 @@
                         </li>
                         <li class="nav-section">
                         </li>
-                        <hr class="divider">
                         <li class="nav-item" id="components">
                             <a href="{{ url('component') }}">
                                 <i class="fas fa-cog"></i>
