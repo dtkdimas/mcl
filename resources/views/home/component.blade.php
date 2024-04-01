@@ -71,8 +71,8 @@
                                                 <a href="{{ route('component.edit', $item->id) }}"
                                                     class="btn btn-warning btn-sm"><i class="fas fa-edit"></i>
                                                     Edit</a>
-                                                <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal"
-                                                    data-bs-target="#deleteModal-{{ $item->id }}"><i
+                                                <a href="#" class="btn btn-danger btn-sm" data-toggle="modal"
+                                                    data-target="#deleteModal-{{ $item->id }}"><i
                                                         class="fas fa-trash"></i>
                                                     Delete</a>
                                             </td>
@@ -89,22 +89,23 @@
 
     <!-- Delete Modal-->
     @foreach ($component as $item)
-        <div class="modal fade" id="deleteModal-{{ $item->id }}" data-bs-backdrop="static" data-bs-keyboard="false"
+        <div class="modal fade" id="deleteModal-{{ $item->id }}" data-backdrop="static" data-keyboard="false"
             tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <form action="{{ url('component/' . $item->id) }}" method="post">
                         @method('DELETE')
                         @csrf
                         <div class="modal-header">
                             <h1 class="modal-title fs-5" id="staticBackdropLabel">Delete component</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
                         </div>
                         <div class="modal-body">
                             Are you sure want to delete <b>{{ $item->component }}</b> from table?
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             <button class="btn btn-danger" type="submit">Delete</button>
                         </div>
                     </form>
