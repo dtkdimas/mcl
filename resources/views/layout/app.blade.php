@@ -31,7 +31,7 @@
     @yield('css')
 
     {{-- import css --}}
-    {{-- <link rel="stylesheet" href="{{ asset('css/app.css') }}"> --}}
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 
 <body>
@@ -68,7 +68,7 @@
             <nav class="navbar navbar-header navbar-expand-lg">
 
                 <div class="container-fluid">
-                    <div class="collapse" id="search-nav">
+                    {{-- <div class="collapse" id="search-nav">
                         <form class="navbar-left navbar-form nav-search mr-md-3">
                             <div class="input-group">
                                 <div class="input-group-prepend">
@@ -79,18 +79,18 @@
                                 <input type="text" placeholder="Search ..." class="form-control">
                             </div>
                         </form>
-                    </div>
+                    </div> --}}
                     <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
-                        <li class="nav-item toggle-nav-search hidden-caret">
+                        {{-- <li class="nav-item toggle-nav-search hidden-caret">
                             <a class="nav-link" data-toggle="collapse" href="#search-nav" role="button"
                                 aria-expanded="false" aria-controls="search-nav">
                                 <i class="fa fa-search"></i>
                             </a>
-                        </li>
+                        </li> --}}
                         <li class="nav-item dropdown hidden-caret">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-                                <span class="text-white">Hi, {{ Auth::user()->name }}</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="#fff"
+                                <span class="user-title">Hi, {{ Auth::user()->name }}</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="#495057"
                                     class="bi bi-caret-down-fill" viewBox="0 0 16 16">
                                     <path
                                         d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
@@ -129,21 +129,22 @@
                         </li>
                         <li class="nav-section">
                         </li>
+                        <hr class="divider">
                         <li class="nav-item" id="components">
                             <a href="{{ url('component') }}">
-                                <i class="fas fa-pen-square"></i>
+                                <i class="fas fa-cog"></i>
                                 <p>Components</p>
                             </a>
                         </li>
                         <li class="nav-item" id="categories">
                             <a href="{{ url('category') }}">
-                                <i class="fas fa-pen-square"></i>
+                                <i class="fas fa-folder-open"></i>
                                 <p>Categories</p>
                             </a>
                         </li>
                         <li class="nav-item" id="version">
                             <a href="{{ url('year') }}">
-                                <i class="fas fa-pen-square"></i>
+                                <i class="fas fa-wrench"></i>
                                 <p>Version</p>
                             </a>
                         </li>

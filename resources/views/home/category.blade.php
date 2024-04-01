@@ -100,7 +100,7 @@
                     <div class="modal-body">
                         <label for="year_id" class="font-semibold">Year</label>
                         <span class="text-danger">*</span>
-                        <select name="year_id" id="year_id" class="form-select">
+                        <select name="year_id" id="year_id" class="form-control">
                             <option value="" hidden>Choose</option>
                             @foreach ($year as $item)
                                 <option value="{{ $item->id }}">{{ $item->year }}</option>
@@ -142,7 +142,7 @@
                         <div class="modal-body">
                             <label for="year_id" class="font-semibold">Year</label>
                             <span class="text-danger">*</span>
-                            <select name="year_id" id="year_id" class="form-select">
+                            <select name="year_id" id="year_id" class="form-control">
                                 {{-- <option value="" hidden>Choose</option> --}}
                                 @foreach ($year as $yearItem)
                                     <option value="{{ $yearItem->id }}"
