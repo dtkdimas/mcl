@@ -3,233 +3,198 @@
 
 <head>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>@yield('title')</title>
+    <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+    {{-- <link rel="icon" href="{{ asset('assets/img/icon.ico') }}" type="image/x-icon" /> --}}
 
+    <!-- Fonts and icons -->
+    <script src="{{ asset('assets/js/plugin/webfont/webfont.min.js') }}"></script>
+    <script>
+        WebFont.load({
+            google: {
+                "families": ["Open+Sans:300,400,600,700"]
+            },
+            custom: {
+                "families": ["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands"],
+                urls: ['../assets/css/fonts.css']
+            },
+            active: function() {
+                sessionStorage.fonts = true;
+            }
+        });
+    </script>
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/azzara.min.css') }}">
     @yield('css')
+
     {{-- import css --}}
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-
-    {{-- Bootstrap 5 --}}
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
-    <!-- Custom fonts for this template -->
-    <link href="{{ asset('template/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="{{ asset('template/css/sb-admin-2.min.css') }}" rel="stylesheet">
-
-    <!-- Custom styles for this page -->
-    <link href="{{ asset('template/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
-
+    {{-- <link rel="stylesheet" href="{{ asset('css/app.css') }}"> --}}
 </head>
 
-<body id="page-top">
-
+<body>
     <!-- Page Wrapper -->
     <div id="wrapper">
 
-        <!-- Sidebar -->
-        <div class="container-xxl bd-gutter bd-layout">
-            <aside class="bd-sidebar">
-                <div class="offcanvas-body flex-column">
-                    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <!--
+   Tip 1: You can change the background color of the main header using: data-background-color="blue | purple | light-blue | green | orange | red"
+  -->
+        <div class="main-header" data-background-color="purple">
+            <!-- Logo Header -->
+            <div class="logo-header">
 
-                        <!-- Sidebar - Brand -->
-                        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
-                            {{-- <div class="sidebar-brand-icon rotate-n-15">
-                            <i class="fas fa-laugh-wink"></i>
-                            </div> --}}
-                            <div class="sidebar-brand-text mx-3">Microsite</div>
-                        </a>
+                <a href="index.html" class="logo">
+                    {{-- <img src="../assets/img/logoazzara.svg" alt="navbar brand" class="navbar-brand"> --}}
+                    <h1 class="navbar-brand text-white fw-bold mt-1">MICROSITE</h1>
+                </a>
+                <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse"
+                    data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon">
+                        <i class="fa fa-bars"></i>
+                    </span>
+                </button>
+                <button class="topbar-toggler more"><i class="fa fa-ellipsis-v"></i></button>
+                <div class="navbar-minimize">
+                    <button class="btn btn-minimize btn-rounded">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- End Logo Header -->
 
-                        <!-- Divider -->
-                        <hr class="sidebar-divider my-0">
+            <!-- Navbar Header -->
+            <nav class="navbar navbar-header navbar-expand-lg">
 
-                        <!-- Nav Item - Dashboard -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('home') }}">
-                                <i class="fas fa-fw fa-tachometer-alt"></i>
-                                <span>Dashboard</span></a>
+                <div class="container-fluid">
+                    <div class="collapse" id="search-nav">
+                        <form class="navbar-left navbar-form nav-search mr-md-3">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <button type="submit" class="btn btn-search pr-1">
+                                        <i class="fa fa-search search-icon"></i>
+                                    </button>
+                                </div>
+                                <input type="text" placeholder="Search ..." class="form-control">
+                            </div>
+                        </form>
+                    </div>
+                    <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
+                        <li class="nav-item toggle-nav-search hidden-caret">
+                            <a class="nav-link" data-toggle="collapse" href="#search-nav" role="button"
+                                aria-expanded="false" aria-controls="search-nav">
+                                <i class="fa fa-search"></i>
+                            </a>
                         </li>
-
-                        <!-- Divider -->
-                        <hr class="sidebar-divider">
-
-                        <!-- Heading -->
-                        <div class="sidebar-heading">
-                            Data
-                        </div>
-
-                        <!-- Nav Item - Components -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('component') }}">
-                                <i class="fas fa-fw fa-cog"></i>
-                                <span>Components</span></a>
+                        <li class="nav-item dropdown hidden-caret">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                                <span class="text-white">Hi, {{ Auth::user()->name }}</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="#fff"
+                                    class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                                    <path
+                                        d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+                                </svg>
+                            </a>
+                            {{-- <ul class="dropdown-menu animated fadeIn"> --}}
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <form action="{{ route('logout') }}"method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="dropdown-item" type="submit">Logout</button>
+                                    </form>
+                                </li>
+                            </ul>
                         </li>
-
-                        <!-- Nav Item - Category -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('category') }}">
-                                <i class="fas fa-fw fa-folder"></i>
-                                <span>Categories</span></a>
-                        </li>
-
-                        <!-- Nav Item - Tahun -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('year') }}">
-                                <i class="fas fa-fw fa-wrench"></i>
-                                <span>Version</span></a>
-                        </li>
-
-                        <!-- Divider -->
-                        <hr class="sidebar-divider d-none d-md-block">
-
-                        <!-- Sidebar Toggler (Sidebar) -->
-                        {{-- <div class="text-center d-none d-md-inline">
-                            <button class="rounded-circle border-0" id="sidebarToggle"></button>
-                        </div> --}}
 
                     </ul>
                 </div>
-            </aside>
-            <!-- End of Sidebar -->
+            </nav>
+            <!-- End Navbar -->
+        </div>
 
-            <!-- Content Wrapper -->
-            <main class="bd-main">
-                <div id="content-wrapper" class="d-flex flex-column">
+        <!-- Sidebar -->
+        <div class="sidebar">
 
-                    <!-- Main Content -->
-                    <div id="content">
-
-                        <!-- Topbar -->
-                        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
-                            <!-- Sidebar Toggle (Topbar) -->
-                            <form class="form-inline">
-                                <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                                    <i class="fa fa-bars"></i>
-                                </button>
-                            </form>
-
-                            <!-- Topbar Navbar -->
-                            <ul class="navbar-nav ml-auto">
-
-                                <div class="topbar-divider d-none d-sm-block"></div>
-
-                                <!-- Nav Item - User Information -->
-                                <li class="nav-item dropdown no-arrow">
-                                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <span class="mr-2 d-none d-lg-inline text-gray-600 small">Hi,
-                                            {{ Auth::user()->name }}
-                                        </span>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"
-                                            fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
-                                            <path
-                                                d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
-                                        </svg>
-                                    </a>
-                                    <!-- Dropdown - User Information -->
-                                    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                        aria-labelledby="userDropdown">
-                                        <a class="dropdown-item" href="#" data-toggle="modal"
-                                            data-target="#logoutModal">
-                                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                            Logout
-                                        </a>
-                                    </div>
-                                </li>
-
-                            </ul>
-
-                        </nav>
-                        <!-- End of Topbar -->
-
-                        <!-- Begin Page Content -->
-                        <div class="container-fluid">
-                            @yield('content')
-                        </div>
-                        <!-- /.container-fluid -->
-
-                    </div>
-                    <!-- End of Main Content -->
-
-                    <!-- Footer -->
-                    <footer class="sticky-footer bg-white">
-                        <div class="container my-auto">
-                            <div class="copyright text-center my-auto">
-                                <span>Component Library - Made for Detikcom Frontend Designer Team</span>
-                            </div>
-                        </div>
-                    </footer>
-                    <!-- End of Footer -->
-
+            <div class="sidebar-background"></div>
+            <div class="sidebar-wrapper scrollbar-inner">
+                <div class="sidebar-content">
+                    <ul class="nav">
+                        <li class="nav-item active" id="dashboard">
+                            <a href="{{ url('home') }}">
+                                <i class="fas fa-home"></i>
+                                <p>Dashboard</p>
+                            </a>
+                        </li>
+                        <li class="nav-section">
+                        </li>
+                        <li class="nav-item" id="components">
+                            <a href="{{ url('component') }}">
+                                <i class="fas fa-pen-square"></i>
+                                <p>Components</p>
+                            </a>
+                        </li>
+                        <li class="nav-item" id="categories">
+                            <a href="{{ url('category') }}">
+                                <i class="fas fa-pen-square"></i>
+                                <p>Categories</p>
+                            </a>
+                        </li>
+                        <li class="nav-item" id="version">
+                            <a href="{{ url('year') }}">
+                                <i class="fas fa-pen-square"></i>
+                                <p>Version</p>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
-            </main>
-            <!-- End of Content Wrapper -->
+            </div>
+        </div>
+        <!-- End Sidebar -->
+
+        {{-- main  --}}
+        <div class="main-panel">
+            <div class="content">
+                @yield('content')
+            </div>
         </div>
 
     </div>
     <!-- End of Page Wrapper -->
 
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
+    <!--   Core JS Files   -->
+    <script src="{{ asset('assets/js/core/jquery.3.2.1.min.js') }}"></script>
+    <script src="{{ asset('assets/js/core/popper.min.js') }}"></script>
+    <script src="{{ asset('assets/js/core/bootstrap.min.js') }}"></script>
 
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <form action="{{ route('logout') }}"method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button class="btn btn-primary" type="submit">Logout</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- jQuery UI -->
+    <script src="{{ asset('assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js') }}"></script>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="{{ asset('template/vendor/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('template/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-    </script>
+    <!-- jQuery Scrollbar -->
+    <script src="{{ asset('assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js') }}"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="{{ asset('template/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+    <!-- Moment JS -->
+    <script src="{{ asset('assets/js/plugin/moment/moment.min.js') }}"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="{{ asset('template/js/sb-admin-2.min.js') }}"></script>
+    <!-- jQuery Sparkline -->
+    <script src="{{ asset('assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js') }}"></script>
 
-    <!-- Page level plugins -->
-    <script src="{{ asset('template/vendor/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('template/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
+    <!-- Datatables -->
+    <script src="{{ asset('assets/js/plugin/datatables/datatables.min.js') }}"></script>
 
-    <!-- Page level custom scripts -->
-    <script src="{{ asset('template/js/demo/datatables-demo.js') }}"></script>
+    <!-- Bootstrap Notify -->
+    <script src="{{ asset('assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
+
+    <!-- Bootstrap Toggle -->
+    <script src="{{ asset('assets/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js') }}"></script>
+
+    <!-- Sweet Alert -->
+    <script src="{{ asset('assets/js/plugin/sweetalert/sweetalert.min.js') }}"></script>
+
+    <!-- Azzara JS -->
+    <script src="{{ asset('assets/js/ready.min.js') }}"></script>
 
     @yield('js')
 
