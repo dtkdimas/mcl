@@ -3763,7 +3763,6 @@ label.error {
     width: 25px;
     height: 25px;
     line-height: 25px;
-    top: 12px !important;
     border-radius: 50%;
 }
 .alert-danger,
@@ -3902,13 +3901,13 @@ label.error {
     min-width: 1.6875rem;
     width: 1.6875rem;
 }
-.btn-default {
+.btn-defaultt {
     background: #282a3c !important;
     color: #fff !important;
 }
-.btn-default:disabled,
-.btn-default:focus,
-.btn-default:hover {
+.btn-defaultt:disabled,
+.btn-defaultt:focus,
+.btn-defaultt:hover {
     background: #282a3c !important;
     color: #fff !important;
 }

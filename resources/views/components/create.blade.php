@@ -3,6 +3,7 @@
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/component.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
 @endsection
 @section('content')
     <div class="page-inner">
@@ -100,6 +101,7 @@
 
 @section('js')
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
     <script>
         $(document).ready(function() {
             $("#year_id").change(function() {
@@ -124,6 +126,12 @@
                     }
                 })
             })
+        });
+
+        $(document).ready(function() {
+            $('#note').summernote({
+                height: 250
+            });
         });
     </script>
 @endsection

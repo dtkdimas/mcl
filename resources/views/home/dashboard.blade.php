@@ -72,7 +72,7 @@
                         <div class="row">
                             <div class="col-5">
                                 <div class="icon-big text-center">
-                                    <i class="flaticon-success"></i>
+                                    <i class="flaticon-user"></i>
                                 </div>
                             </div>
                             <div class="col col-stats">
@@ -113,14 +113,14 @@
                                             <td>{{ $no++ }}</td>
                                             <td>{{ $item->causer->name }}</td>
                                             <td>{{ $item->event }}</td>
-                                            <td style="max-width: 300px">
+                                            <td style="max-width: 250px">
                                                 @if (@is_array($item->changes['old']))
                                                     @foreach ($item->changes['old'] as $key => $itemChange)
                                                         {{ $key }} : {{ $itemChange }} </br>
                                                     @endforeach
                                                 @endif
                                             </td>
-                                            <td style="max-width: 300px">
+                                            <td style="max-width: 250px">
                                                 @if (@is_array($item->changes['attributes']))
                                                     @foreach ($item->changes['attributes'] as $key => $itemChange)
                                                         {{ $key }} : {{ $itemChange }} </br>

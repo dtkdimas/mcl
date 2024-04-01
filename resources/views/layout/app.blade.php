@@ -197,6 +197,8 @@
     <!-- Azzara JS -->
     <script src="{{ asset('assets/js/ready.min.js') }}"></script>
 
+    <script></script>
+
     @yield('js')
 
 </body>

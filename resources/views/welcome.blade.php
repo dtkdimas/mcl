@@ -105,10 +105,10 @@
         </aside>
         <main class="bd-main order-1 iframe-container">
             <h1 id="iframe-header" class="fw-bold">Get started with Microsite Component Library</h1>
-            <p id="iframe-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maiores ipsam totam sequi
+            <div id="iframe-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maiores ipsam totam sequi
                 facilis dolores, dolorem dolore nostrum ab velit, quibusdam sed voluptatibus, aliquid praesentium cum
                 ullam explicabo culpa. Reiciendis deleniti ab alias optio fuga libero molestias eos. Velit explicabo
-                distinctio, laborum aspernatur iusto, odio eius ad delectus vero magnam itaque?</p>
+                distinctio, laborum aspernatur iusto, odio eius ad delectus vero magnam itaque?</div>
             <iframe id="iframe-content"
                 src="https://codepen.io/Dimas-Septiandi-the-solid/embed/xxQebeX?default-tab=html%2Cresult"
                 width="100%" height="500" frameborder="0"></iframe>
@@ -212,7 +212,7 @@
         function loadIframe(src, componentName, note) {
             document.getElementById('iframe-content').src = src;
             document.getElementById('iframe-header').innerText = componentName;
-            document.getElementById('iframe-text').innerText = note || '';
+            document.getElementById('iframe-text').innerHTML = note || '';
         }
 
         //untuk sidebar responsive
