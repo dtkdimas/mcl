@@ -98,8 +98,9 @@
                         @csrf
                         <div class="modal-header">
                             <h1 class="modal-title fs-5" id="staticBackdropLabel">Delete component</h1>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                    aria-hidden="true">&times;</span></button>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
                         <div class="modal-body">
                             Are you sure want to delete <b>{{ $item->component }}</b> from table?
