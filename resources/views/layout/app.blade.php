@@ -110,8 +110,6 @@
                                 <p>Dashboard</p>
                             </a>
                         </li>
-                        <li class="nav-section">
-                        </li>
                         <li class="nav-item" id="components">
                             <a href="{{ url('component') }}">
                                 <i class="fas fa-cog"></i>
