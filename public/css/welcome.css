@@ -206,6 +206,10 @@ li {
     color: var(--primary-color);
 }
 
+#iframe-header {
+    font-size: 3rem;
+}
+
 #iframe-header,
 #iframe-text {
     font-family: "Montserrat", sans-serif;
