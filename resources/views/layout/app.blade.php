@@ -102,7 +102,7 @@
                                     <form action="{{ route('logout') }}"method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button class="dropdown-item" type="submit">Logout</button>
+                                        <button class="dropdown-item logout-button" type="submit">Logout</button>
                                     </form>
                                 </li>
                             </ul>
