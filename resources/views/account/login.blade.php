@@ -17,7 +17,8 @@
 <body>
     <div class="login-wrapper">
         <div class="login-header">
-            <h1 class="card-title">LOGIN</h1>
+            <h1 class="card-title">Login</h1>
+            <p class="card-subtitle">You have to login first</p>
         </div>
         <div class="login-body">
             @if (Session::has('error'))
@@ -28,15 +29,18 @@
             <form action="{{ route('login') }}" method="POST">
                 @csrf
                 <div class="mb-3">
-                    <input type="email" name="email" id="email" placeholder="email" required>
+                    <input type="email" name="email" id="email" placeholder="Email address" required>
                 </div>
                 <div class="mb-3">
-                    <input type="password" name="password" id="password" placeholder="password" required>
+                    <input type="password" name="password" id="password" placeholder="Password" required>
                 </div>
                 <div class="mb-3">
-                    <button class="">Login</button>
+                    <button class="">Sign in</button>
                 </div>
             </form>
+        </div>
+        <div class="forgot text-center">
+            <p>Forgot password? Contact <span>designer@detik.com</span></p>
         </div>
     </div>
 
