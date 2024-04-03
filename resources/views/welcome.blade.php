@@ -87,7 +87,7 @@
                                                     @foreach ($category->components as $component)
                                                         <ul>
                                                             <li>
-                                                                <a href="#" class="link"
+                                                                <a href="#{{ $component->component }}" class="link"
                                                                     onclick="loadIframe('{{ $component->iframe_src }}','{{ $component->component }}','{{ $component->note }}')">{{ $component->component }}</a>
                                                             </li>
                                                         </ul>
