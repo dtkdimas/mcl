@@ -68,34 +68,39 @@
                     <div class="accordion w-100" id="accordionPanelsStayOpenExample">
                         <div class="accordion-item item-parent">
                             <h2 class="accordion-header header-parent">
-                                <button class="accordion-button btn-parent collapsed" type="button"
-                                    data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-{{ $year->year }}"
-                                    aria-expanded="true" aria-controls="panelsStayOpen-{{ $year->year }}">
+                                <button
+                                    class="accordion-button btn-parent{{ $yearId != $year->id ? ' collapsed' : '' }}"
+                                    type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#panelsStayOpen-{{ $year->year }}"
+                                    aria-expanded="{{ $yearId == $year->id ? 'true' : 'false' }}"
+                                    aria-controls="panelsStayOpen-{{ $year->year }}">
                                     {{ $year->year }}
                                 </button>
                             </h2>
                             <div id="panelsStayOpen-{{ $year->year }}"
-                                class="accordion-collapse collapse collapse-parent">
+                                class="accordion-collapse collapse{{ $yearId == $year->id ? ' show' : '' }}">
                                 <div class="accordion-body body-parent">
                                     @foreach ($year->categories as $category)
-                                        <div class="accordion-item item-child">
+                                        <div
+                                            class="accordion-item item-child{{ $categoryId == $category->id ? ' show' : '' }}">
                                             <h2 class="accordion-header header-child">
-                                                <button class="accordion-button collapsed btn-child" type="button"
-                                                    data-bs-toggle="collapse"
+                                                <button
+                                                    class="accordion-button btn-child{{ $categoryId != $category->id ? ' collapsed' : '' }}"
+                                                    type="button" data-bs-toggle="collapse"
                                                     data-bs-target="#panelsStayOpen-{{ $category->id }}"
-                                                    aria-expanded="true"
+                                                    aria-expanded="{{ $categoryId == $category->id ? 'true' : 'false' }}"
                                                     aria-controls="panelsStayOpen-{{ $category->id }}">
                                                     {{ $category->category }}
                                                 </button>
                                             </h2>
                                             <div id="panelsStayOpen-{{ $category->id }}"
-                                                class="accordion-collapse collapse">
+                                                class="accordion-collapse collapse{{ $categoryId == $category->id ? ' show' : '' }}">
                                                 <div class="accordion-body body-child">
                                                     @foreach ($category->components as $component)
                                                         <ul>
                                                             <li>
                                                                 <a href="{{ route('view.component', ['year' => $year->year, 'category' => $category->category, 'id' => $component->id, 'component' => $component->component]) }}"
-                                                                    class="link">{{ $component->component }}</a>
+                                                                    class="link{{ $componentId == $component->id ? ' active' : '' }}">{{ $component->component }}</a>
                                                             </li>
                                                         </ul>
                                                     @endforeach
@@ -111,11 +116,10 @@
             </div>
         </aside>
         <main class="bd-main order-1 iframe-container">
-            <h1 id="iframe-header" class="fw-bold">Get started with Microsite Component Library</h1>
-            <div id="iframe-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maiores ipsam totam sequi
-                facilis dolores, dolorem dolore nostrum ab velit, quibusdam sed voluptatibus, aliquid praesentium cum
-                ullam explicabo culpa. Reiciendis deleniti ab alias optio fuga libero molestias eos. Velit explicabo
-                distinctio, laborum aspernatur iusto, odio eius ad delectus vero magnam itaque?</div>
+            <h1 id="iframe-header" class="fw-bold">{{ $componentName }}</h1>
+            <div id="iframe-text" data-note="{{ $note }}"></div>
+            <iframe id="iframe-content" src="{{ $iframe_src }}" width="100%" height="500"
+                frameborder="0"></iframe>
         </main>
     </div>
 
@@ -150,24 +154,8 @@
     </script>
 
     <script>
-        //logic untuk menambahkan active pada link dibody accordion
-        document.addEventListener("DOMContentLoaded", function() {
-            var links = document.querySelectorAll(
-                '.link'); // Mengambil semua elemen tautan dengan kelas 'fw-semibold'
-
-            // Menambahkan event listener untuk setiap tautan
-            links.forEach(function(link) {
-                link.addEventListener('click', function(event) {
-                    // Menghapus kelas 'active' dari semua tautan
-                    links.forEach(function(link) {
-                        link.classList.remove('active');
-                    });
-
-                    // Menambahkan kelas 'active' pada tautan yang diklik
-                    this.classList.add('active');
-                });
-            });
-        });
+        // Mendapatkan nilai dari atribut data dan memasukkannya ke dalam innerHTML
+        document.getElementById('iframe-text').innerHTML = document.getElementById('iframe-text').getAttribute('data-note');
 
         // Penanganan jika kolom kategori tidak memiliki komponen maka akan tidak didisplay
         document.addEventListener("DOMContentLoaded", function() {
