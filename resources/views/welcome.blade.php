@@ -129,20 +129,36 @@
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
                 <div class="modal-body">
-                    ...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <div class="search-box">
+                        <div class="search-wrapper">
+                            <i class='bx bx-search bx-md'></i>
+                            <input type="text" id="input-box" class="search-input" placeholder="Search..."
+                                autocomplete="off">
+                        </div>
+                        <div class="result-box">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+    @php
+        $availableKeywords = [];
+        foreach ($years as $year) {
+            foreach ($year->categories as $category) {
+                foreach ($category->components as $component) {
+                    $availableKeywords[] = [
+                        'component' => $component->component,
+                        'year' => $year->year,
+                        'category' => $category->category,
+                        'id' => $component->id,
+                    ];
+                }
+            }
+        }
+    @endphp
 
     <!-- Bootstrap core JavaScript-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
@@ -150,24 +166,59 @@
     </script>
 
     <script>
-        //logic untuk menambahkan active pada link dibody accordion
-        document.addEventListener("DOMContentLoaded", function() {
-            var links = document.querySelectorAll(
-                '.link'); // Mengambil semua elemen tautan dengan kelas 'fw-semibold'
+        // search 
+        let availableKeyword = @json($availableKeywords);
 
-            // Menambahkan event listener untuk setiap tautan
-            links.forEach(function(link) {
-                link.addEventListener('click', function(event) {
-                    // Menghapus kelas 'active' dari semua tautan
-                    links.forEach(function(link) {
-                        link.classList.remove('active');
-                    });
+        const resultBox = document.querySelector(".result-box");
+        const inputBox = document.getElementById("input-box");
 
-                    // Menambahkan kelas 'active' pada tautan yang diklik
-                    this.classList.add('active');
+        inputBox.onkeyup = function() {
+            let result = [];
+            let input = inputBox.value;
+            if (input.length) {
+                result = availableKeyword.filter((keyword) => {
+                    return keyword.component.toLowerCase().includes(input.toLowerCase());
                 });
+                console.log(result);
+            }
+            display(result);
+
+            if (!result.length) {
+                resultBox.innerHTML = "";
+            }
+        }
+
+        function display(result) {
+            // Menggunakan objek untuk mengelompokkan komponen berdasarkan tahun
+            const groupedByYear = result.reduce((acc, item) => {
+                if (!acc[item.year]) {
+                    acc[item.year] = [];
+                }
+                acc[item.year].push(item);
+                return acc;
+            }, {});
+
+            // Membuat konten HTML untuk setiap tahun dan komponennya
+            const content = Object.keys(groupedByYear).map(year => {
+                const components = groupedByYear[year].map(component => {
+                    return `<li onclick="selectInput('${component.year}', '${component.category}', '${component.id}', '${component.component}')">${component.component}</li>`;
+                }).join('');
+
+                return `<div class="groupYear">${year}</div>
+                <ul>${components}</ul>`;
             });
-        });
+
+            resultBox.innerHTML = content.join("");
+        }
+
+        function selectInput(year, category, id, component) {
+            window.location.href =
+                "{{ route('view.component', ['year' => ':year', 'category' => ':category', 'id' => ':id', 'component' => ':component']) }}"
+                .replace(':year', year)
+                .replace(':category', category)
+                .replace(':id', id)
+                .replace(':component', component);
+        }
 
         // Penanganan jika kolom kategori tidak memiliki komponen maka akan tidak didisplay
         document.addEventListener("DOMContentLoaded", function() {
