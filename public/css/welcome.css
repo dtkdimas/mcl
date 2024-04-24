@@ -295,6 +295,10 @@ footer {
     overflow-y: scroll;
 }
 
+.result-box ul {
+    padding: 0;
+}
+
 .result-box ul li {
     list-style: none;
     font-weight: 500;
