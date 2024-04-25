@@ -385,6 +385,14 @@ footer {
     margin-bottom: 0;
 }
 
+.loginBtn-responsive {
+    display: none;
+}
+
+.divider-responsive {
+    display: none;
+}
+
 .accordion-responsive {
     display: none;
 }

@@ -279,6 +279,8 @@
             const intro = document.querySelector('.introduction');
             const offcanvasBody = document.querySelector('.offcanvas-body');
             const navigationWrapper = document.querySelector('.navigation-wrapper');
+            const loginBtn = document.querySelector('.login-btn');
+            const divider = document.querySelector('.divider');
 
             menuIcon.addEventListener('click', function() {
                 layoutContainer.classList.toggle('bd-layout-responsive');
@@ -289,6 +291,8 @@
                 intro.classList.toggle('intro-responsive');
                 offcanvasBody.classList.toggle('offcanvasBody-responsive');
                 navigationWrapper.classList.toggle('navigationWrapper-responsive');
+                loginBtn.classList.toggle('loginBtn-responsive');
+                divider.classList.toggle('divider-responsive');
             });
         });
     </script>
