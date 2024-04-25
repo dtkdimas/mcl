@@ -139,14 +139,22 @@ li {
     border-radius: 5px;
     padding: 10px 14px;
     margin-bottom: 8px;
-    background-color: var(--first-color);
+    background-color: var(--white-color);
 }
 
 .introduction h5 {
     font-size: 0.9rem;
     font-weight: 600;
-    color: var(--primary-color);
+    color: var(--black-color);
     margin-bottom: 0;
+}
+
+.introduction:hover {
+    background-color: var(--third-color);
+}
+
+.introduction h5:hover {
+    color: var(--primary-color);
 }
 
 .accordion-item {
@@ -167,7 +175,6 @@ li {
     border-radius: 5px;
     color: var(--black-color);
     background-color: var(--white-color);
-    transition: 0.2s;
 }
 
 .accordion-button:hover {
