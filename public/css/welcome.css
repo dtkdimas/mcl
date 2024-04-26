@@ -187,6 +187,23 @@ li {
     background-color: var(--first-color);
 }
 
+.introduction2 {
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 5px;
+    padding: 10px 14px;
+    margin-bottom: 8px;
+    color: var(--black-color);
+    background-color: var(--white-color);
+    transition: 0.15s ease-in;
+}
+
+.introduction2:hover {
+    color: var(--primary-color);
+    background-color: var(--third-color);
+}
+
 .accordion-item {
     border: none;
     color: var(--black-color);
@@ -475,6 +492,9 @@ footer {
         overflow-y: auto;
     }
     .sidebar-nav .introduction {
+        display: flex;
+    }
+    .sidebar-nav .introduction2 {
         display: flex;
     }
 }

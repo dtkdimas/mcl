@@ -14,7 +14,7 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     {{-- import css --}}
-    <link rel="stylesheet" href="{{ asset('css/viewComponent.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
 
 </head>
 
@@ -50,7 +50,7 @@
                 </div>
             </a>
             <div class="divider"></div>
-            <a href="/" class="introduction">
+            <a href="/" class="introduction2">
                 Getting Started
             </a>
             @foreach ($years as $year)
@@ -183,7 +183,7 @@
                     </div>
                 </a>
                 <div class="divider"></div>
-                <a href="/" class="introduction">
+                <a href="/" class="introduction2">
                     Getting Started
                 </a>
                 @foreach ($years as $year)
