@@ -171,7 +171,7 @@
                         </svg>
                     </div>
                 </div>
-                <a href="{{ route('login') }}" class="login-btn">
+                <a href="{{ route('login') }}" id="login-btn" class="login-btn">
                     Login
                     <div class="d-flex align-items-center">
                         <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
@@ -182,8 +182,8 @@
                         </svg>
                     </div>
                 </a>
-                <div class="divider"></div>
-                <a href="/" class="introduction2">
+                <div id="divider" class="divider"></div>
+                <a href="/" id="introduction2" class="introduction2">
                     Getting Started
                 </a>
                 @foreach ($years as $year)
@@ -388,11 +388,11 @@
             const layoutContainer = document.querySelector('.bd-layout');
             const accordion = document.querySelectorAll('.accordion');
             const searchBtn = document.querySelector('.search-btn');
-            const intro = document.querySelector('.introduction');
+            const intro = document.getElementById('introduction2');
             const offcanvasBody = document.querySelector('.offcanvas-body');
             const navigationWrapper = document.querySelector('.navigation-wrapper');
-            const loginBtn = document.querySelector('.login-btn');
-            const divider = document.querySelector('.divider');
+            const loginBtn = document.getElementById('login-btn');
+            const divider = document.getElementById('divider');
 
             menuIcon.addEventListener('click', function() {
                 menuIcon.classList.toggle('navigationBtn-responsive');
