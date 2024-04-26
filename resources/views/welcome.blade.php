@@ -14,7 +14,7 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     {{-- import css --}}
-    <link rel="stylesheet" href="{{ asset('css/welcome.css') }}?v2">
+    <link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
 
 </head>
 
