@@ -82,7 +82,7 @@
                 </a>
                 <div class="divider"></div>
                 <a href="/" class="introduction">
-                    <h5 class="intro-title">Getting Started</h5>
+                    Getting Started
                 </a>
                 @foreach ($years as $year)
                     <div class="accordion w-100" id="accordionPanelsStayOpenExample">
@@ -290,6 +290,7 @@
             const divider = document.querySelector('.divider');
 
             menuIcon.addEventListener('click', function() {
+                menuIcon.classList.toggle('navigationBtn-responsive');
                 layoutContainer.classList.toggle('bd-layout-responsive');
                 accordion.forEach(item => {
                     item.classList.toggle('accordion-responsive');
