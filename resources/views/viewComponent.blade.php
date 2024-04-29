@@ -152,23 +152,8 @@
                                 fill="#A3A3A3" />
                         </svg>
                     </button>
-                    <div class="navigation-btn d-flex align-items-center">
-                        <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <g clip-path="url(#clip0_239_212)">
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M2.04263 2.04263H7.5C7.89964 2.04263 8.22824 1.71403 8.22824 1.31439V0.728242C8.22824 0.328597 7.89964 0 7.5 0H1.27886C0.572824 0 0 0.572824 0 1.27886V13.7211C0 14.4272 0.572824 15 1.27886 15H13.7211C14.4272 15 15 14.4272 15 13.7211V7.5C15 7.10036 14.6714 6.77176 14.2718 6.77176H13.6856C13.286 6.77176 12.9574 7.10036 12.9574 7.5V12.9574H2.04263V2.04263Z"
-                                    fill="#aeaeae" />
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M6.91385 2.96187C6.5142 2.96187 6.18561 3.29047 6.18561 3.69011V7.50006C6.18561 8.22386 6.77619 8.81445 7.49999 8.81445H11.3099C11.7096 8.81445 12.0382 8.48585 12.0382 8.0862V7.50006C12.0382 7.10041 11.7096 6.77182 11.3099 6.77182H9.68472L14.698 1.75849C15.1021 1.35441 15.1021 0.701656 14.698 0.297571C14.294 -0.106514 13.6412 -0.106514 13.2371 0.297571L8.2238 5.31089V3.68567C8.2238 3.28603 7.8952 2.95743 7.49555 2.95743H6.90941L6.91385 2.96187Z"
-                                    fill="#aeaeae" />
-                            </g>
-                            <defs>
-                                <clipPath id="clip0_239_212">
-                                    <rect width="15" height="15" fill="white" />
-                                </clipPath>
-                            </defs>
-                        </svg>
+                    <div class="navigation-btn d-flex align-items-center" onclick="changeIcon()">
+                        <img src="{{ asset('assets/svg/minimize.svg') }}" alt="svg" id="svgImage">
                     </div>
                 </div>
                 <a href="{{ route('login') }}" id="login-btn" class="login-btn">
@@ -187,7 +172,7 @@
                     Getting Started
                 </a>
                 @foreach ($years as $year)
-                    <div class="accordion w-100" id="accordionPanelsStayOpenExample">
+                    <div class="accordion w-100" id="accordion-menu">
                         <div class="accordion-item item-parent">
                             <h2 class="accordion-header header-parent">
                                 <button
@@ -382,11 +367,17 @@
             });
         });
 
+        function changeIcon() {
+            var img = document.getElementById('svgImage');
+            img.src = (img.src.includes('minimize.svg')) ? '{{ asset('assets/svg/maximize.svg') }}' :
+                '{{ asset('assets/svg/minimize.svg') }}';
+        }
+
         //untuk sidebar responsive
         document.addEventListener('DOMContentLoaded', function() {
             const menuIcon = document.querySelector('.navigation-btn');
             const layoutContainer = document.querySelector('.bd-layout');
-            const accordion = document.querySelectorAll('.accordion');
+            const accordion = document.querySelectorAll('#accordion-menu');
             const searchBtn = document.querySelector('.search-btn');
             const intro = document.getElementById('introduction2');
             const offcanvasBody = document.querySelector('.offcanvas-body');

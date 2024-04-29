@@ -161,11 +161,12 @@ li {
     border-radius: 8px;
     color: var(--white-color);
     background-color: var(--primary-color);
+    box-shadow: 0px 4px 10px 0px #9747ff40;
     transition: 0.3s ease-out;
 }
 
 .login-btn:hover {
-    box-shadow: 0px 4px 8px rgba(225, 93, 255, 0.5);
+    box-shadow: 0px 4px 20px 3px rgb(227 152 244 / 50%);
 }
 
 .divider {
@@ -402,8 +403,8 @@ footer {
     margin-bottom: 0;
 }
 
-.navigationBtn-responsive svg {
-    transform: rotate(-90deg);
+.navigationBtn-responsive {
+    background-color: var(--primary-color) !important;
 }
 
 .loginBtn-responsive {
