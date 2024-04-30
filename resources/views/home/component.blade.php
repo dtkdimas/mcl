@@ -53,6 +53,8 @@
                                             <th>Year</th>
                                             <th>Category</th>
                                             <th>Component</th>
+                                            <th>Created at</th>
+                                            <th>Updated at</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -64,9 +66,11 @@
                                                 <td>{{ $item->Year->year }}</td>
                                                 <td>{{ $item->Category->category }}</td>
                                                 <td>{{ $item->component }}</td>
-                                                <td class="d-flex justify-content-center gap-2">
+                                                <td>{{ $item->created_at }}</td>
+                                                <td>{{ $item->updated_at }}</td>
+                                                <td class="d-flex gap-2">
                                                     <a href="{{ route('component.edit', $item->id) }}"
-                                                        class="btn btn-warning btn-sm d-flex align-items-center">
+                                                        class="btn btn-sm d-flex align-items-center">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="20"
                                                             height="20" viewBox="0 0 24 24" fill="none"
                                                             stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -79,8 +83,7 @@
                                                                 d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
                                                             <path d="M16 5l3 3" />
                                                         </svg> Edit</a>
-                                                    <a href="#"
-                                                        class="btn btn-danger btn-sm d-flex align-items-center"
+                                                    <a href="#" class="btn btn-sm d-flex align-items-center"
                                                         data-bs-toggle="modal"
                                                         data-bs-target="#deleteModal-{{ $item->id }}">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="20"
@@ -119,9 +122,9 @@
                         @csrf
                         <div class="modal-header">
                             <h1 class="modal-title fs-5" id="staticBackdropLabel">Delete component</h1>
-                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <a href="" class="close" data-bs-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
-                            </button>
+                            </a>
                         </div>
                         <div class="modal-body">
                             Are you sure want to delete <b>{{ $item->component }}</b> from table?
