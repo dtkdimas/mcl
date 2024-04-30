@@ -57,3 +57,8 @@
 .dropdown-toggle::after {
     display: none;
 }
+
+.modal-footer {
+    gap: 1rem;
+    margin-top: 1rem;
+}

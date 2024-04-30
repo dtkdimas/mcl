@@ -10,15 +10,14 @@
     <div class="page-inner">
         <!-- Page Heading -->
         <div class="page-header">
-            <h4 class="page-title">Update</h4>
         </div>
 
         @if (session('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 {{ session('success') }}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <a href="" class="close" data-bs-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
-                </button>
+                </a>
             </div>
         @endif
 
@@ -27,18 +26,16 @@
                 @foreach ($errors->all() as $error)
                     {{ $error }}
                 @endforeach
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <a href="" class="close" data-bs-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
-                </button>
+                </a>
             </div>
         @endif
 
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">
-                        <div class="card-title">Update Component Form</div>
-                    </div>
+                    <h4 class="card-header">Update Component Form</h4>
                     <div class="card-body">
                         <form action="{{ route('component.update', $component->id) }}" method="POST">
                             @csrf
