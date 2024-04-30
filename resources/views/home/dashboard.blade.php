@@ -4,84 +4,39 @@
     <div class="page-inner">
         <!-- Page Heading -->
         <div class="page-header">
-            <h4 class="page-title">Dashboard</h4>
         </div>
 
         {{-- page content  --}}
         <div class="row">
             <div class="col-sm-6 col-md-3">
-                <div class="card card-stats card-primary card-round">
+                <div class="card">
+                    <p class="card-header fw-semibold">Total Components</p>
                     <div class="card-body">
-                        <div class="row">
-                            <div class="col-5">
-                                <div class="icon-big text-center">
-                                    <i class="flaticon-settings"></i>
-                                </div>
-                            </div>
-                            <div class="col col-stats">
-                                <div class="numbers">
-                                    <p class="card-category">Components</p>
-                                    <h4 class="card-title">{{ $component }}</h4>
-                                </div>
-                            </div>
-                        </div>
+                        <h4 class="">{{ $component }}</h4>
                     </div>
                 </div>
             </div>
             <div class="col-sm-6 col-md-3">
-                <div class="card card-stats card-info card-round">
+                <div class="card">
+                    <p class="card-header fw-semibold">Total Categories</p>
                     <div class="card-body">
-                        <div class="row">
-                            <div class="col-5">
-                                <div class="icon-big text-center">
-                                    <i class="flaticon-folder"></i>
-                                </div>
-                            </div>
-                            <div class="col col-stats">
-                                <div class="numbers">
-                                    <p class="card-category">Categories</p>
-                                    <h4 class="card-title">{{ $category }}</h4>
-                                </div>
-                            </div>
-                        </div>
+                        <h4 class="">{{ $category }}</h4>
                     </div>
                 </div>
             </div>
             <div class="col-sm-6 col-md-3">
-                <div class="card card-stats card-success card-round">
-                    <div class="card-body ">
-                        <div class="row">
-                            <div class="col-5">
-                                <div class="icon-big text-center">
-                                    <i class="flaticon-suitcase"></i>
-                                </div>
-                            </div>
-                            <div class="col col-stats">
-                                <div class="numbers">
-                                    <p class="card-category">Version</p>
-                                    <h4 class="card-title">{{ $year }}</h4>
-                                </div>
-                            </div>
-                        </div>
+                <div class="card">
+                    <p class="card-header fw-semibold">Total Version</p>
+                    <div class="card-body">
+                        <h4 class="">{{ $year }}</h4>
                     </div>
                 </div>
             </div>
             <div class="col-sm-6 col-md-3">
-                <div class="card card-stats card-secondary card-round">
-                    <div class="card-body ">
-                        <div class="row">
-                            <div class="col-5">
-                                <div class="icon-big text-center">
-                                    <i class="flaticon-user"></i>
-                                </div>
-                            </div>
-                            <div class="col col-stats">
-                                <div class="numbers">
-                                    <p class="card-category">Admin</p>
-                                    <h4 class="card-title">{{ $user }}</h4>
-                                </div>
-                            </div>
-                        </div>
+                <div class="card">
+                    <p class="card-header fw-semibold">Total Admin</p>
+                    <div class="card-body">
+                        <h4 class="">{{ $user }}</h4>
                     </div>
                 </div>
             </div>
@@ -94,7 +49,7 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="basic-datatables" class="display table table-striped table-hover">
+                            <table id="basic-datatables" class="table table-striped table-hover w-100">
                                 <thead>
                                     <tr class="">
                                         <th>No</th>
@@ -113,14 +68,14 @@
                                             <td>{{ $no++ }}</td>
                                             <td>{{ $item->causer->name }}</td>
                                             <td>{{ $item->event }}</td>
-                                            <td style="max-width: 250px">
+                                            <td>
                                                 @if (@is_array($item->changes['old']))
                                                     @foreach ($item->changes['old'] as $key => $itemChange)
                                                         {{ $key }} : {{ $itemChange }} </br>
                                                     @endforeach
                                                 @endif
                                             </td>
-                                            <td style="max-width: 250px">
+                                            <td>
                                                 @if (@is_array($item->changes['attributes']))
                                                     @foreach ($item->changes['attributes'] as $key => $itemChange)
                                                         {{ $key }} : {{ $itemChange }} </br>

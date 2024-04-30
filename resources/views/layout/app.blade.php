@@ -2,182 +2,156 @@
 <html lang="en">
 
 <head>
-
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title')</title>
-    <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+
     {{-- <link rel="icon" href="{{ asset('assets/img/icon.ico') }}" type="image/x-icon" /> --}}
 
-    <!-- Fonts and icons -->
-    <script src="{{ asset('assets/js/plugin/webfont/webfont.min.js') }}"></script>
-    <script>
-        WebFont.load({
-            google: {
-                "families": ["Open+Sans:300,400,600,700"]
-            },
-            custom: {
-                "families": ["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands"],
-                urls: ['../assets/css/fonts.css']
-            },
-            active: function() {
-                sessionStorage.fonts = true;
-            }
-        });
-    </script>
-
     <!-- CSS Files -->
-    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/azzara.min.css') }}">
-    @yield('css')
+    <link rel="stylesheet" href="{{ asset('assets/css/styles.min.css') }}" />
+    {{-- <link rel="stylesheet" href="https://cdn.datatables.net/2.0.5/css/dataTables.dataTables.css" /> --}}
 
     {{-- import css --}}
+    @yield('css')
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 
 <body>
-    <!-- Page Wrapper -->
-    <div id="wrapper">
-
-        <!--
-   Tip 1: You can change the background color of the main header using: data-background-color="blue | purple | light-blue | green | orange | red"
-  -->
-        <div class="main-header" data-background-color="purple">
-            <!-- Logo Header -->
-            <div class="logo-header">
-
-                <a href="index.html" class="logo">
-                    {{-- <img src="../assets/img/logoazzara.svg" alt="navbar brand" class="navbar-brand"> --}}
-                    <h1 class="navbar-brand text-white fw-bold mt-1">MICROSITE</h1>
-                </a>
-                <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse"
-                    data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon">
-                        <i class="fa fa-bars"></i>
-                    </span>
-                </button>
-                <button class="topbar-toggler more"><i class="fa fa-ellipsis-v"></i></button>
-                <div class="navbar-minimize">
-                    <button class="btn btn-minimize btn-rounded">
-                        <i class="fa fa-bars"></i>
-                    </button>
+    <!--  Body Wrapper -->
+    <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+        data-sidebar-position="fixed" data-header-position="fixed">
+        <!-- Sidebar Start -->
+        <aside class="left-sidebar">
+            <!-- Sidebar scroll-->
+            <div>
+                <div class="brand-logo d-flex align-items-center justify-content-between">
+                    <a href="" class="text-nowrap logo-img">
+                        <h1 class="logo-name">MyComponentLib</h1>
+                    </a>
+                    <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+                        <i class="ti ti-x fs-8"></i>
+                    </div>
                 </div>
-            </div>
-            <!-- End Logo Header -->
-
-            <!-- Navbar Header -->
-            <nav class="navbar navbar-header navbar-expand-lg">
-
-                <div class="container-fluid">
-                    <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
-                        <li class="nav-item dropdown hidden-caret">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-                                <span class="user-title">Hi, {{ Auth::user()->name }}</span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="#495057"
-                                    class="bi bi-caret-down-fill" viewBox="0 0 16 16">
-                                    <path
-                                        d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
-                                </svg>
-                            </a>
-                            {{-- <ul class="dropdown-menu animated fadeIn"> --}}
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <form action="{{ route('logout') }}"method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="dropdown-item logout-button" type="submit">Logout</button>
-                                    </form>
-                                </li>
-                            </ul>
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+                    <ul id="sidebarnav">
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">Home</span>
                         </li>
-
-                    </ul>
-                </div>
-            </nav>
-            <!-- End Navbar -->
-        </div>
-
-        <!-- Sidebar -->
-        <div class="sidebar">
-
-            <div class="sidebar-background"></div>
-            <div class="sidebar-wrapper scrollbar-inner">
-                <div class="sidebar-content">
-                    <hr class="divider my-0">
-                    <ul class="nav">
-                        <li class="nav-item active" id="dashboard">
-                            <a href="{{ url('home') }}">
-                                <i class="fas fa-home"></i>
-                                <p>Dashboard</p>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="{{ url('home') }}" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-layout-dashboard"component></i>
+                                </span>
+                                <span class="hide-menu">Dashboard</span>
                             </a>
                         </li>
-                        <li class="nav-item" id="components">
-                            <a href="{{ url('component') }}">
-                                <i class="fas fa-cog"></i>
-                                <p>Components</p>
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">UI COMPONENTS</span>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="{{ url('component') }}" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-article"></i>
+                                </span>
+                                <span class="hide-menu">Component</span>
                             </a>
                         </li>
-                        <li class="nav-item" id="categories">
-                            <a href="{{ url('category') }}">
-                                <i class="fas fa-folder-open"></i>
-                                <p>Categories</p>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="{{ url('category') }}" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-alert-circle"></i>
+                                </span>
+                                <span class="hide-menu">Category</span>
                             </a>
                         </li>
-                        <li class="nav-item" id="version">
-                            <a href="{{ url('year') }}">
-                                <i class="fas fa-wrench"></i>
-                                <p>Version</p>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="{{ url('year') }}" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-cards"></i>
+                                </span>
+                                <span class="hide-menu">Version</span>
                             </a>
                         </li>
                     </ul>
+                </nav>
+                <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+        </aside>
+        <!--  Sidebar End -->
+        <!--  Main wrapper -->
+        <div class="body-wrapper">
+            <!--  Header Start -->
+            <header class="app-header">
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <ul class="navbar-nav">
+                        <li class="nav-item d-block d-xl-none">
+                            <a class="nav-link sidebartoggler nav-icon-hover" id="headerCollapse"
+                                href="javascript:void(0)">
+                                <i class="ti ti-menu-2"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
+                        <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    <span class="user-title">Hi, {{ Auth::user()->name }}</span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up"
+                                    aria-labelledby="drop2">
+                                    <div class="message-body">
+                                        <a href="javascript:void(0)"
+                                            class="d-flex align-items-center gap-2 dropdown-item">
+                                            <i class="ti ti-user fs-6"></i>
+                                            <p class="mb-0 fs-3">My Profile</p>
+                                        </a>
+                                        <a href="javascript:void(0)"
+                                            class="d-flex align-items-center gap-2 dropdown-item">
+                                            <i class="ti ti-mail fs-6"></i>
+                                            <p class="mb-0 fs-3">My Account</p>
+                                        </a>
+                                        <a href="javascript:void(0)"
+                                            class="d-flex align-items-center gap-2 dropdown-item">
+                                            <i class="ti ti-list-check fs-6"></i>
+                                            <p class="mb-0 fs-3">My Task</p>
+                                        </a>
+                                        <form action="{{ route('logout') }}"method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn btn-outline-primary mx-3 mt-2 d-block"
+                                                style="width: 86%;" type="submit">Logout</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+            <!--  Header End -->
+            <div class="container-fluid">
+                <!--  Row 1 -->
+                <div class="row">
+                    @yield('content')
                 </div>
             </div>
         </div>
-        <!-- End Sidebar -->
-
-        {{-- main  --}}
-        <div class="main-panel">
-            <div class="content">
-                @yield('content')
-            </div>
-        </div>
-
     </div>
     <!-- End of Page Wrapper -->
-
-    <!--   Core JS Files   -->
-    <script src="{{ asset('assets/js/core/jquery.3.2.1.min.js') }}"></script>
-    <script src="{{ asset('assets/js/core/popper.min.js') }}"></script>
-    <script src="{{ asset('assets/js/core/bootstrap.min.js') }}"></script>
-
-    <!-- jQuery UI -->
-    <script src="{{ asset('assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js') }}"></script>
-    <script src="{{ asset('assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js') }}"></script>
-
-    <!-- jQuery Scrollbar -->
-    <script src="{{ asset('assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js') }}"></script>
-
-    <!-- Moment JS -->
-    <script src="{{ asset('assets/js/plugin/moment/moment.min.js') }}"></script>
-
-    <!-- jQuery Sparkline -->
-    <script src="{{ asset('assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js') }}"></script>
-
-    <!-- Datatables -->
-    <script src="{{ asset('assets/js/plugin/datatables/datatables.min.js') }}"></script>
-
-    <!-- Bootstrap Notify -->
-    <script src="{{ asset('assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
-
-    <!-- Bootstrap Toggle -->
-    <script src="{{ asset('assets/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js') }}"></script>
-
-    <!-- Sweet Alert -->
-    <script src="{{ asset('assets/js/plugin/sweetalert/sweetalert.min.js') }}"></script>
-
-    <!-- Azzara JS -->
-    <script src="{{ asset('assets/js/ready.min.js') }}"></script>
-
-    <script></script>
+    <script src="{{ asset('assets/libs/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/js/sidebarmenu.js') }}"></script>
+    <script src="{{ asset('assets/js/app.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/apexcharts/dist/apexcharts.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/simplebar/dist/simplebar.js') }}"></script>
+    <script src="{{ asset('assets/js/dashboard.js') }}"></script>
+    <script src="https://cdn.datatables.net/2.0.5/js/dataTables.js"></script>
 
     @yield('js')
 
