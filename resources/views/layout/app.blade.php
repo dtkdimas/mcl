@@ -26,7 +26,7 @@
             <!-- Sidebar scroll-->
             <div>
                 <div class="brand-logo d-flex align-items-center justify-content-between">
-                    <a href="" class="text-nowrap logo-img">
+                    <a href="{{ url('home') }}" class="text-nowrap logo-img">
                         <h1 class="logo-name">MyComponentLib</h1>
                     </a>
                     <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
