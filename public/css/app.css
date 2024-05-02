@@ -150,3 +150,8 @@ div.dt-container .dt-paging .dt-paging-button.current:hover {
         rgba(0, 0, 0, 0.05) 100%
     );
 }
+
+.note-editor.note-airframe.fullscreen,
+.note-editor.note-frame.fullscreen {
+    background-color: white;
+}

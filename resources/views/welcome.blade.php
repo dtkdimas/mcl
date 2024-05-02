@@ -225,11 +225,13 @@
             </div>
         </aside>
         <main class="bd-main order-1 iframe-container">
-            <h1 id="iframe-header" class="fw-bold">Get started with Microsite Component Library</h1>
+            <h1 id="iframe-header" class="fw-bold">Develop rapid and adaptable microsite using Microsite Component
+                Library.</h1>
             <div id="iframe-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maiores ipsam totam sequi
                 facilis dolores, dolorem dolore nostrum ab velit, quibusdam sed voluptatibus, aliquid praesentium cum
                 ullam explicabo culpa. Reiciendis deleniti ab alias optio fuga libero molestias eos. Velit explicabo
                 distinctio, laborum aspernatur iusto, odio eius ad delectus vero magnam itaque?</div>
+            <h1 class="">Get started with Microsite Component Library</h1>
         </main>
     </div>
 

@@ -1,11 +1,20 @@
+.alert-danger .close {
+    font-size: 0.875rem;
+    line-height: inherit;
+}
+
+#year_id {
+    cursor: pointer;
+}
+
 .select2 {
     width: 100% !important;
 }
 
 .select2-container {
     display: block !important;
-    /* padding: 0.375rem 2.25rem 0.375rem 0.75rem; */
-    padding: 0.6rem 1rem;
+    padding: 6.5px 16px;
+    /* padding: 0.6rem 1rem; */
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
@@ -14,8 +23,8 @@
     -moz-appearance: none;
     appearance: none;
     background-color: var(--bs-body-bg);
-    border: 1px solid #ebedf2;
-    border-radius: 0.25rem;
+    border: var(--bs-border-width) solid #dfe5ef;
+    border-radius: 7px;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
@@ -25,13 +34,15 @@
 }
 
 .select2-selection__rendered {
+    font-size: 0.875rem;
     line-height: 21px !important;
     padding: 0 !important;
+    color: #5a6a85 !important;
 }
 
 .select2-selection__placeholder {
-    font-size: 13px;
-    color: #495057 !important;
+    font-size: 0.875rem;
+    color: #5a6a85 !important;
 }
 
 .select2-container--default
@@ -42,7 +53,7 @@
 }
 
 .select2-selection__arrow {
-    top: 0 !important;
+    /* top: 0 !important;
     right: 0 !important;
     width: 100% !important;
     height: 100% !important;
@@ -51,7 +62,7 @@
         var(--bs-form-select-bg-icon, none);
     background-repeat: no-repeat;
     background-position: right center;
-    background-size: 16px 9px;
+    background-size: 16px 9px; */
 }
 
 .dropdown-toggle::after {

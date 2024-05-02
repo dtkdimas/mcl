@@ -63,7 +63,7 @@
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="{{ url('category') }}" aria-expanded="false">
                                 <span>
-                                    <i class="ti ti-alert-circle"></i>
+                                    <i class="ti ti-category"></i>
                                 </span>
                                 <span class="hide-menu">Category</span>
                             </a>

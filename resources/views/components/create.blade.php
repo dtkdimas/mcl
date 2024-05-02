@@ -13,7 +13,7 @@
         </div>
 
         @if (session('success'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <div class="alert alert-success alert-dismissible fade show d-flex justify-content-between" role="alert">
                 {{ session('success') }}
                 <a href="" class="close" data-bs-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -22,7 +22,7 @@
         @endif
 
         @if ($errors->any())
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <div class="alert alert-danger alert-dismissible fade show d-flex justify-content-between" role="alert">
                 @foreach ($errors->all() as $error)
                     {{ $error }}
                 @endforeach
@@ -44,7 +44,7 @@
                                 <span class="text-danger">*</span>
                                 <select name="year_id" id="year_id" class="form-control">
                                     <option value="" hidden>Choose</option>
-                                    @foreach ($year as $item)
+                                    @foreach ($year->sortBy('year') as $item)
                                         <option value="{{ $item->id }}">{{ $item->year }}</option>
                                     @endforeach
                                 </select>
@@ -87,8 +87,15 @@
             $("#year_id").change(function() {
                 let id = $("#year_id").val();
 
+                // Hapus opsi yang sudah ada sebelum menginisialisasi ulang Select2
+                $("#category_id").empty();
+
+                // Kembalikan ke placeholder terlebih dahulu
+                $("#category_id").append('<option value="" selected>Choose</option>');
+
                 $("#category_id").select2({
                     placeholder: 'Choose',
+                    minimumInputLength: 0, // Menetapkan minimumInputLength ke 0 untuk kembali ke placeholder
                     ajax: {
                         url: "{{ url('getCategory') }}/" + id,
                         processResults: function({

@@ -127,7 +127,7 @@
                         <span class="text-danger">*</span>
                         <select name="year_id" id="year_id" class="form-control">
                             <option value="" hidden>Choose</option>
-                            @foreach ($year as $item)
+                            @foreach ($year->sortBy('year') as $item)
                                 <option value="{{ $item->id }}">{{ $item->year }}</option>
                             @endforeach
                         </select>
@@ -136,9 +136,6 @@
                         <span class="text-danger">*</span>
                         <input type="text" class="form-control" name="category" id="category"
                             value="{{ old('category') }}">
-                        {{-- @error('category')
-                                        <p class="mt-1 text-danger">{{ $message }}</p>
-                                    @enderror --}}
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
