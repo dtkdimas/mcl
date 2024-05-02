@@ -10,7 +10,7 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
     {{-- bootstrap  --}}
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/libs/bootstrap/dist/css/bootstrap.min.css') }}?v2" rel="stylesheet">
 
     {{-- import css --}}
     <link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
@@ -276,7 +276,7 @@
     @endphp
 
     <!-- Bootstrap core JavaScript-->
-    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
 
     <!-- Jquery -->
     <script src="{{ asset('assets/libs/jquery/dist/jquery.min.js') }}"></script>
