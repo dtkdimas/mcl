@@ -287,7 +287,7 @@
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 
     <!-- Jquery -->
-    <script src="{{ asset('assets/js/core/jquery.3.2.1.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/jquery/dist/jquery.min.js') }}"></script>
 
     <script>
         // search 
