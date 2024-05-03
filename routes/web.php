@@ -6,6 +6,7 @@ use App\Http\Controllers\YearController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ComponentController;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,4 +38,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('/component', ComponentController::class);
     Route::get('/component', [ComponentController::class, 'index'])->name('home.component');
     Route::get('/getCategory/{id}', [ComponentController::class, 'category']);
+    Route::get('/changePassword',[ProfileController::class, 'index'])->name('changePassword');
+    Route::post('/changePassword', [ProfileController::class, 'updatePassword'])->name('settings.password');
 });

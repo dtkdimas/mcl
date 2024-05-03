@@ -10,7 +10,6 @@
 
     <!-- CSS Files -->
     <link rel="stylesheet" href="{{ asset('assets/css/styles.min.css') }}" />
-    {{-- <link rel="stylesheet" href="https://cdn.datatables.net/2.0.5/css/dataTables.dataTables.css" /> --}}
 
     {{-- import css --}}
     @yield('css')
@@ -50,7 +49,7 @@
                         </li>
                         <li class="nav-small-cap">
                             <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                            <span class="hide-menu">UI COMPONENTS</span>
+                            <span class="hide-menu">COMPONENTS DATA</span>
                         </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="{{ url('component') }}" aria-expanded="false">
@@ -76,6 +75,34 @@
                                 <span class="hide-menu">Version</span>
                             </a>
                         </li>
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">SETTINGS</span>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="{{ url('changePassword') }}" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-lock"></i>
+                                </span>
+                                <span class="hide-menu">Password</span>
+                            </a>
+                        </li>
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">ACCOUNT</span>
+                        </li>
+                        <li class="sidebar-item">
+                            <form action="{{ route('logout') }}"method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button class="sidebar-link sidebar-logout" aria-expanded="false" type="submit">
+                                    <span>
+                                        <i class="ti ti-logout"></i>
+                                    </span>
+                                    <span class="hide-menu">Logout</span>
+                                </button>
+                            </form>
+                        </li>
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
@@ -98,37 +125,10 @@
                     </ul>
                     <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
                         <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
+                            <li class="nav-item">
+                                <a class="nav-link" id="drop2">
                                     <span class="user-title">Hi, {{ Auth::user()->name }}</span>
                                 </a>
-                                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up"
-                                    aria-labelledby="drop2">
-                                    <div class="message-body">
-                                        <a href="javascript:void(0)"
-                                            class="d-flex align-items-center gap-2 dropdown-item">
-                                            <i class="ti ti-user fs-6"></i>
-                                            <p class="mb-0 fs-3">My Profile</p>
-                                        </a>
-                                        <a href="javascript:void(0)"
-                                            class="d-flex align-items-center gap-2 dropdown-item">
-                                            <i class="ti ti-mail fs-6"></i>
-                                            <p class="mb-0 fs-3">My Account</p>
-                                        </a>
-                                        <a href="javascript:void(0)"
-                                            class="d-flex align-items-center gap-2 dropdown-item">
-                                            <i class="ti ti-list-check fs-6"></i>
-                                            <p class="mb-0 fs-3">My Task</p>
-                                        </a>
-                                        <form action="{{ route('logout') }}"method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button class="btn btn-outline-primary mx-3 mt-2 d-block"
-                                                style="width: 86%;" type="submit">Logout</button>
-                                        </form>
-                                    </div>
-                                </div>
                             </li>
                         </ul>
                     </div>

@@ -31,6 +31,16 @@ a {
     margin-bottom: 8px;
 }
 
+.sidebar-logout {
+    width: 100%;
+    border: none;
+    background-color: white;
+}
+
+.sidebar-logout:hover {
+    background-color: rgba(93, 135, 255, 0.1) !important;
+}
+
 .card-title {
     margin-bottom: 1rem;
     padding-bottom: 1rem;
