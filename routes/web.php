@@ -7,6 +7,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ComponentController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PasswordController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +28,12 @@ Route::group(['middleware' => 'guest'], function () {
     Route::get('/login', [AuthController::class, 'login'])->name('login');
     Route::post('/login', [AuthController::class, 'loginPost'])->name('login');
     Route::get('/component/{year}/{category}/{id}/{component}', [WelcomeController::class, 'show'])->name('view.component');
+    
+    //reset password
+    Route::get('/forgot-password',[PasswordController::class, 'index'])->name('password.request');
+    Route::post('/forgot-password',[PasswordController::class, 'forgotPassword'])->name('password.email');
+    Route::get('/reset-password/{token}',[PasswordController::class, 'resetPasswordIndex'])->name('password.reset');
+    Route::post('/reset-password',[PasswordController::class, 'resetPassword'])->name('password.update');
 });
 
 Route::group(['middleware' => 'auth'], function () {

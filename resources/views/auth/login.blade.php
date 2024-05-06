@@ -40,7 +40,8 @@
             </form>
         </div>
         <div class="forgot text-center">
-            <p>Forgot password? Contact <span>designer@detik.com</span></p>
+            {{-- <p>Forgot password? Contact <span>designer@detik.com</span></p> --}}
+            <a href="{{ route('password.request') }}">Forgot Password</a>
         </div>
     </div>
 
