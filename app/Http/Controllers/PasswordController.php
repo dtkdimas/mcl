@@ -38,13 +38,17 @@ class PasswordController extends Controller
 
     public function resetPasswordIndex($token)
     {
-       return view('auth.resetPassword', compact('token'));
+        $user = DB::table('password_reset_tokens')->where('token', $token)->first();
+        if (!$user) {
+            return redirect()->to(route('password.email'))->with('error', 'Invalid');
+        }
+        return view('auth.resetPassword', compact('token', 'user'));
     }
 
     public function resetPassword(Request $request)
     {
         $request->validate([
-            'email' => $request->email,
+            // 'email' => $request->email,
             'password' => 'required|min:3|confirmed',
             'password_confirmation' => 'required'
         ]);

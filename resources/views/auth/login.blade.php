@@ -21,6 +21,15 @@
             <p class="card-subtitle">You have to login first</p>
         </div>
         <div class="login-body">
+            @if (session('success'))
+                <div class="alert alert-success alert-dismissible fade show d-flex justify-content-between"
+                    role="alert">
+                    {{ session('success') }}
+                    <a href="" class="close" data-bs-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </a>
+                </div>
+            @endif
             @if (Session::has('error'))
                 <div class="alert alert-danger" role="alert">
                     {{ Session::get('error') }}

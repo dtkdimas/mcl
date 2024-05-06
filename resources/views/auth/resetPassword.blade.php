@@ -35,7 +35,7 @@
                 @csrf
                 <input type="hidden" name="token" value="{{ $token }}">
                 <div class="mb-3">
-                    {{-- <input type="email" name="email" id="email" readonly value="{{ $user->email }}"> --}}
+                    <input type="email" name="email" id="email" readonly value="{{ $user->email }}">
                 </div>
                 <div class="mb-3">
                     <input type="password" name="password" id="password" placeholder="New Password" required>
