@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use App\Models\PasswordResetToken;
-use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use App\Mail\ResetPasswordMail;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 
 class PasswordController extends Controller
@@ -20,57 +20,49 @@ class PasswordController extends Controller
     public function forgotPassword(Request $request){
         $request->validate(['email' => 'required|email|exists:users,email']);
         
-        $token = \Str::random(60);
+        $token = Str::random(64);
 
-        PasswordResetToken::updateOrCreate(
-        [
-            'email' => $request->email,
-        ],
-        [
-            'email' => $request->email,
-            'token' => $token,
-            'created_at' => now(),
+        DB::table('password_reset_tokens')->insert([
+                'email' => $request->email,
+                'token' => $token,
+                'created_at' => Carbon::now()
         ]);
 
-        Mail::to($request->mail)->send(new ResetPasswordMail($token));
+        Mail::send('emails.resetPassword', ['token' => $token], function ($message) use($request){
+            $message->to($request->email);
+            $message->subject('Reset Password');
+        });
 
-        return back()->with('success', 'We have send link to your email');
+        return back()->with('success', 'We have send an email to reset your password');
     }
 
-    public function resetPasswordIndex(Request $request, $token)
+    public function resetPasswordIndex($token)
     {
-        $getToken = PasswordResetToken::where('token', $token)->first();
-
-        if(!$getToken){
-            return redirect()->route('login')->with('error', 'Token tidak valid');
-        }
-
-        return view('auth.resetPassword', compact('token'));
+       return view('auth.resetPassword', compact('token'));
     }
 
-    public function resetPassword(Request $request){
+    public function resetPassword(Request $request)
+    {
         $request->validate([
-            'password' => 'required|min:3'
-        ]);
-        
-        $token = PasswordResetToken::where('token', $request->token)->first();
-
-        if(!$token){
-            return redirect()->route('login')->with('error', 'Token tidak valid');
-        }
-
-        $user = User::where('email', $token->email)->first();
-
-        if(!$user){
-            return redirect()->route('login')->with('error', 'Email tidak terdaftar');
-        }
-
-        $user->update([
-            'password' => Hash::make($request->password)
+            'email' => $request->email,
+            'password' => 'required|min:3|confirmed',
+            'password_confirmation' => 'required'
         ]);
 
-        $token->delete();
+        $updatePassword = DB::table('password_reset_tokens')->where([
+            'email' => $request->email,
+            'token' => $request->token
+        ])->first();
 
-        return redirect()->route('login')->with('success', 'Password telah direset');
+        if(!$updatePassword){
+            return redirect()->to(route('password.email'))->with('error', 'Invalid');
+        }
+
+        User::where('email', $request->email)
+            ->update(['password' => Hash::make($request->password)]);
+
+        DB::table('password_reset_tokens')->where(['email' => $request->email])->delete();
+
+        return redirect()->to(route('login'))->with('success', 'Password reset successfully');
     }
 }
