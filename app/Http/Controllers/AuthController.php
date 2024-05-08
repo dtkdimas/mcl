@@ -45,7 +45,17 @@ class AuthController extends Controller
             'password' => $request->password,
         ];
 
+        $data = $request->all();
+
         if(Auth::attempt($credetials)){
+            if(isset($data['remember'])&&!empty($data['remember'])){
+                setcookie('email',$data['email'], time()+2592000);
+                setcookie('password',$data['password'], time()+2592000);
+            } else {
+                setcookie('email','');
+                setcookie('password','');
+            }
+
             return redirect('/home');
         }
         return back()->with('error', 'Incorrect email or password');

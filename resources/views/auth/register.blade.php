@@ -18,11 +18,25 @@
     <div class="login-wrapper">
         <div class="login-header">
             <h1 class="card-title">Register</h1>
+            <p class="card-subtitle">Register new account</p>
         </div>
         <div class="login-body">
-            @if (Session::has('success'))
-                <div class="alert alert-success" role="alert">
-                    {{ Session::get('success') }}
+            @if (session('success'))
+                <div class="alert alert-success alert-dismissible fade show d-flex justify-content-between"
+                    role="alert">
+                    {{ session('success') }}
+                    <a href="" class="close" data-bs-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </a>
+                </div>
+            @endif
+            @if (Session::has('error'))
+                <div class="alert alert-danger alert-dismissible fade show d-flex justify-content-between"
+                    role="alert">
+                    {{ Session::get('error') }}
+                    <a href="" class="close" data-bs-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </a>
                 </div>
             @endif
             <form action="{{ route('register') }}" method="POST">
@@ -47,6 +61,9 @@
                     <button class="">Register</button>
                 </div>
             </form>
+            <div class="register text-center">
+                <p>Already have an account? <a href="{{ route('login') }}" class="register-link">Login</a></p>
+            </div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

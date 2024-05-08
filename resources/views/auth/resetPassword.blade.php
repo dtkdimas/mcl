@@ -17,7 +17,7 @@
 <body>
     <div class="login-wrapper">
         <div class="login-header">
-            <h1 class="card-title">Reset your Password</h1>
+            <h1 class="card-title">Reset Password</h1>
         </div>
         <div class="login-body">
             @if ($errors->any())

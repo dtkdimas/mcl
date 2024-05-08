@@ -31,26 +31,39 @@
                 </div>
             @endif
             @if (Session::has('error'))
-                <div class="alert alert-danger" role="alert">
+                <div class="alert alert-danger alert-dismissible fade show d-flex justify-content-between"
+                    role="alert">
                     {{ Session::get('error') }}
+                    <a href="" class="close" data-bs-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </a>
                 </div>
             @endif
             <form action="{{ route('login') }}" method="POST">
                 @csrf
                 <div class="mb-3">
-                    <input type="email" name="email" id="email" placeholder="Email address" required>
+                    <input type="email" name="email" id="email" placeholder="Email address"
+                        @if (isset($_COOKIE['email'])) value="{{ $_COOKIE['email'] }}" @endif required>
                 </div>
                 <div class="mb-3">
-                    <input type="password" name="password" id="password" placeholder="Password" required>
+                    <input type="password" name="password" id="password" placeholder="Password"
+                        @if (isset($_COOKIE['password'])) value="{{ $_COOKIE['password'] }}" @endif required>
                 </div>
-                <div class="mb-3">
+                <div class="remember-forgot d-flex justify-content-between align-items-center">
+                    <label class="d-flex align-items-center"><input type="checkbox" name="remember"
+                            @if (isset($_COOKIE['email'])) checked @endif>
+                        Remember me for 30 days</label>
+                    <a href="{{ route('password.request') }}" class="forgot-link">
+                        Forgot Password
+                    </a>
+                </div>
+                <div class="mb-4">
                     <button class="">Sign in</button>
                 </div>
             </form>
-        </div>
-        <div class="forgot text-center">
-            {{-- <p>Forgot password? Contact <span>designer@detik.com</span></p> --}}
-            <a href="{{ route('password.request') }}">Forgot Password</a>
+            <div class="register text-center">
+                <p>Don't have an account? <a href="{{ route('register') }}" class="register-link">Register</a></p>
+            </div>
         </div>
     </div>
 

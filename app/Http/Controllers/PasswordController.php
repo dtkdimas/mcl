@@ -33,7 +33,7 @@ class PasswordController extends Controller
             $message->subject('Reset Password');
         });
 
-        return back()->with('success', 'We have send an email to reset your password');
+        return back()->with('success', 'We have send to your email');
     }
 
     public function resetPasswordIndex($token)
@@ -67,6 +67,6 @@ class PasswordController extends Controller
 
         DB::table('password_reset_tokens')->where(['email' => $request->email])->delete();
 
-        return redirect()->to(route('login'))->with('success', 'Password reset successfully');
+        return redirect()->to(route('login'))->with('success', 'Password reset success');
     }
 }
