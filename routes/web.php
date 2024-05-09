@@ -61,7 +61,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::delete('admin/component/{id}', [ComponentController::class, 'destroy'])->name('admin.component.destroy');
     Route::get('admin/getCategory/{id}', [ComponentController::class, 'category'])->name('admin.category');
     //password
-    Route::get('admin/changePassword',[ProfileController::class, 'index']);
+    Route::get('admin/changePassword',[ProfileController::class, 'adminIndex']);
     Route::post('admin/changePassword', [ProfileController::class, 'updatePassword'])->name('admin.settings.password');
 
     // Super Admin Dashboard
@@ -86,7 +86,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::delete('super-admin/component/{id}', [ComponentController::class, 'destroy'])->name('super-admin.component.destroy');
     Route::get('super-admin/getCategory/{id}', [ComponentController::class, 'category'])->name('super-admin.category');
     //password
-    Route::get('super-admin/changePassword',[ProfileController::class, 'index']);
+    Route::get('super-admin/changePassword',[ProfileController::class, 'superAdminIndex']);
     Route::post('super-admin/changePassword', [ProfileController::class, 'updatePassword'])->name('super-admin.settings.password');
 
     //logout

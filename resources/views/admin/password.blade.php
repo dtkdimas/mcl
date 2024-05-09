@@ -34,7 +34,7 @@
         <div class="card shadow mb-4">
             <h4 class="card-header fw-bold">Change Password</h4>
             <div class="card-body">
-                <form action="{{ route('super-admin.settings.password') }}" method="post">
+                <form action="{{ route('admin.settings.password') }}" method="post">
                     @csrf
                     <div class="form-group">
                         <div class="mb-4">

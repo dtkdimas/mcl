@@ -8,7 +8,11 @@ use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
-    public function index(){
+    public function adminIndex(){
+        return view('admin.password');
+    }
+
+    public function superAdminIndex(){
         return view('super-admin.password');
     }
 
