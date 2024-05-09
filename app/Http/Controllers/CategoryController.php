@@ -9,13 +9,25 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function index(Request $request)
+    public function adminIndex(Request $request)
     {
         $category = Category::with('year')
             ->latest()
             ->get();
 
-        return view('home.category', [
+        return view('admin.category', [
+            'category' => $category,
+            'year' => Year::all(),
+        ]);
+    }
+
+    public function superAdminIndex(Request $request)
+    {
+        $category = Category::with('year')
+            ->latest()
+            ->get();
+
+        return view('super-admin.category', [
             'category' => $category,
             'year' => Year::all(),
         ]);

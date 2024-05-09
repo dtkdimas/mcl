@@ -1,5 +1,5 @@
-@extends('layout.app')
-@section('title', 'Category')
+@extends('super-admin.app')
+@section('title', 'Super Admin - Version')
 @section('content')
     <div class="page-inner">
         <!-- Page Heading -->
@@ -35,8 +35,9 @@
             </div>
         @endif
 
+        <!-- DataTales Example -->
         <div class="card shadow mb-4">
-            <h4 class="card-header">Categories</h4>
+            <h4 class="card-header">Version</h4>
             <div class="card-body">
                 <div class="card-title">
                     <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#createModal">
@@ -48,7 +49,8 @@
                             <path d="M13.5 6.5l4 4" />
                             <path d="M16 19h6" />
                             <path d="M19 16v6" />
-                        </svg> Create</a>
+                        </svg>
+                        Create</a>
                 </div>
                 <div class="">
                     <div class="table-responsive">
@@ -57,7 +59,6 @@
                                 <tr class="">
                                     <th>No</th>
                                     <th>Year</th>
-                                    <th>Category</th>
                                     <th>Created at</th>
                                     <th>Updated at</th>
                                     <th>Action</th>
@@ -65,11 +66,10 @@
                             </thead>
                             <tbody>
                                 <?php $no = 1; ?>
-                                @foreach ($category as $item)
+                                @foreach ($year as $item)
                                     <tr class="">
                                         <td>{{ $no++ }}</td>
-                                        <td>{{ $item->Year->year }}</td>
-                                        <td>{{ $item->category }}</td>
+                                        <td>{{ $item->year }}</td>
                                         <td>{{ $item->created_at }}</td>
                                         <td>{{ $item->updated_at }}</td>
                                         <td class="d-flex gap-2">
@@ -114,28 +114,19 @@
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <form action="{{ url('category') }}" method="POST">
+                <form action="{{ url('super-admin/year') }}" method="POST">
                     @csrf
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Create new category</h1>
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Create new version</h1>
                         <a href="" class="close" data-bs-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </a>
                     </div>
                     <div class="modal-body">
-                        <label for="year_id" class="font-semibold">Year</label>
+                        <label for="year">Input year</label>
                         <span class="text-danger">*</span>
-                        <select name="year_id" id="year_id" class="form-control">
-                            <option value="" hidden>Choose</option>
-                            @foreach ($year->sortBy('year') as $item)
-                                <option value="{{ $item->id }}">{{ $item->year }}</option>
-                            @endforeach
-                        </select>
-                        <div class="mt-3"></div>
-                        <label for="category">Input category</label>
-                        <span class="text-danger">*</span>
-                        <input type="text" class="form-control" name="category" id="category"
-                            value="{{ old('category') }}">
+                        <input type="text" class="form-control" name="year" id="year"
+                            value="{{ old('year') }}">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -147,36 +138,25 @@
     </div>
 
     <!-- Update Modal-->
-    @foreach ($category as $categoryItem)
-        <div class="modal fade" id="editModal-{{ $categoryItem->id }}" data-bs-backdrop="static"
-            data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    @foreach ($year as $item)
+        <div class="modal fade" id="editModal-{{ $item->id }}" data-bs-backdrop="static" data-bs-keyboard="false"
+            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
-                    <form action="{{ url('category/' . $categoryItem->id) }}" method="post">
+                    <form action="{{ url('super-admin/year/' . $item->id) }}" method="post">
                         @method('PUT')
                         @csrf
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Update category</h1>
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Update version</h1>
                             <a href="" class="close" data-bs-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </a>
                         </div>
                         <div class="modal-body">
-                            <label for="year_id" class="font-semibold">Year</label>
+                            <label for="year">Input year</label>
                             <span class="text-danger">*</span>
-                            <select name="year_id" id="year_id" class="form-control">
-                                {{-- <option value="" hidden>Choose</option> --}}
-                                @foreach ($year as $yearItem)
-                                    <option value="{{ $yearItem->id }}"
-                                        {{ $yearItem->id == $categoryItem->year_id ? 'selected' : '' }}>
-                                        {{ $yearItem->year }}</option>
-                                @endforeach
-                            </select>
-                            <div class="mt-3"></div>
-                            <label for="category">Input category</label>
-                            <span class="text-danger">*</span>
-                            <input type="text" class="form-control" name="category" id="category"
-                                value="{{ $categoryItem->category }}">
+                            <input type="text" class="form-control" name="year" id="year"
+                                value="{{ $item->year }}">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -189,22 +169,22 @@
     @endforeach
 
     <!-- Delete Modal-->
-    @foreach ($category as $item)
+    @foreach ($year as $item)
         <div class="modal fade" id="deleteModal-{{ $item->id }}" data-bs-backdrop="static" data-bs-keyboard="false"
             tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
-                    <form action="{{ url('category/' . $item->id) }}" method="post">
+                    <form action="{{ url('super-admin/year/' . $item->id) }}" method="post">
                         @method('DELETE')
                         @csrf
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Delete category</h1>
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Delete version</h1>
                             <a href="" class="close" data-bs-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </a>
                         </div>
                         <div class="modal-body">
-                            Are you sure want to delete <b>{{ $item->category }}</b> from table?
+                            Are you sure want to delete <b>{{ $item->year }}</b> from table?
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -215,6 +195,7 @@
             </div>
         </div>
     @endforeach
+    </div>
     <!-- End of Page Wrapper -->
 @endsection
 

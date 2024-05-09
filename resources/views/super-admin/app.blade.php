@@ -40,7 +40,7 @@
                             <span class="hide-menu">Home</span>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="{{ url('dashboard') }}" aria-expanded="false">
+                            <a class="sidebar-link" href="{{ url('super-admin/dashboard') }}" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-layout-dashboard"component></i>
                                 </span>
@@ -52,7 +52,7 @@
                             <span class="hide-menu">COMPONENTS DATA</span>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="{{ url('component') }}" aria-expanded="false">
+                            <a class="sidebar-link" href="{{ url('super-admin/component') }}" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-article"></i>
                                 </span>
@@ -60,7 +60,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="{{ url('category') }}" aria-expanded="false">
+                            <a class="sidebar-link" href="{{ url('super-admin/category') }}" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-category"></i>
                                 </span>
@@ -68,7 +68,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="{{ url('year') }}" aria-expanded="false">
+                            <a class="sidebar-link" href="{{ url('super-admin/year') }}" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-cards"></i>
                                 </span>
@@ -80,7 +80,8 @@
                             <span class="hide-menu">SETTINGS</span>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="{{ url('changePassword') }}" aria-expanded="false">
+                            <a class="sidebar-link" href="{{ url('super-admin/changePassword') }}"
+                                aria-expanded="false">
                                 <span>
                                     <i class="ti ti-lock"></i>
                                 </span>

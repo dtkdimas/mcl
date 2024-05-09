@@ -8,6 +8,8 @@ use App\Http\Controllers\ComponentController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PasswordController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\SuperAdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,14 +39,56 @@ Route::group(['middleware' => 'guest'], function () {
 });
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/home', [HomeController::class, 'index']);
+    // Admin Dashboard
+    Route::get('admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+    //year
+    Route::get('/admin/year', [YearController::class, 'adminIndex'])->name('admin.year.index');
+    Route::post('/admin/year', [YearController::class, 'store'])->name('admin.year.store');
+    Route::put('/admin/year/{id}', [YearController::class, 'update'])->name('admin.year.update');
+    Route::delete('/admin/year/{id}', [YearController::class, 'destroy'])->name('admin.year.destroy');
+    //category
+    Route::get('/admin/category', [CategoryController::class, 'adminIndex'])->name('admin.category.index');
+    Route::post('/admin/category', [CategoryController::class, 'store'])->name('admin.category.store');
+    Route::get('/admin/category/{id}/edit', [CategoryController::class, 'edit'])->name('admin.category.edit');
+    Route::put('/admin/category/{id}', [CategoryController::class, 'update'])->name('admin.category.update');
+    Route::delete('/admin/category/{id}', [CategoryController::class, 'destroy'])->name('admin.category.destroy');
+    //component
+    Route::get('admin/component', [ComponentController::class, 'adminIndex'])->name('admin.component');
+    Route::get('admin/component/create', [ComponentController::class, 'adminCreate'])->name('admin.component.create');
+    Route::post('admin/component', [ComponentController::class, 'adminStore'])->name('admin.component.store');
+    Route::get('admin/component/{id}/edit', [ComponentController::class, 'adminEdit'])->name('admin.component.edit');
+    Route::put('admin/component/{id}', [ComponentController::class, 'adminUpdate'])->name('admin.component.update');
+    Route::delete('admin/component/{id}', [ComponentController::class, 'destroy'])->name('admin.component.destroy');
+    Route::get('admin/getCategory/{id}', [ComponentController::class, 'category'])->name('admin.category');
+    //password
+    Route::get('admin/changePassword',[ProfileController::class, 'index']);
+    Route::post('admin/changePassword', [ProfileController::class, 'updatePassword'])->name('admin.settings.password');
+
+    // Super Admin Dashboard
+    Route::get('super-admin/dashboard', [SuperAdminController::class, 'index'])->name('super-admin.dashboard');
+    //year
+    Route::get('/super-admin/year', [YearController::class, 'superAdminIndex'])->name('super-admin.year.index');
+    Route::post('/super-admin/year', [YearController::class, 'store'])->name('super-admin.year.store');
+    Route::put('/super-admin/year/{id}', [YearController::class, 'update'])->name('super-admin.year.update');
+    Route::delete('/super-admin/year/{id}', [YearController::class, 'destroy'])->name('super-admin.year.destroy');
+    //category
+    Route::get('/super-admin/category', [CategoryController::class, 'superAdminIndex'])->name('super-admin.category.index');
+    Route::post('/super-admin/category', [CategoryController::class, 'store'])->name('super-admin.category.store');
+    Route::get('/super-admin/category/{id}/edit', [CategoryController::class, 'edit'])->name('super-admin.category.edit');
+    Route::put('/super-admin/category/{id}', [CategoryController::class, 'update'])->name('super-admin.category.update');
+    Route::delete('/super-admin/category/{id}', [CategoryController::class, 'destroy'])->name('super-admin.category.destroy');
+    //component
+    Route::get('super-admin/component', [ComponentController::class, 'superAdminIndex'])->name('super-admin.component');
+    Route::get('super-admin/component/create', [ComponentController::class, 'superAdminCreate'])->name('super-admin.component.create');
+    Route::post('super-admin/component', [ComponentController::class, 'superAdminStore'])->name('super-admin.component.store');
+    Route::get('super-admin/component/{id}/edit', [ComponentController::class, 'superAdminEdit'])->name('super-admin.component.edit');
+    Route::put('super-admin/component/{id}', [ComponentController::class, 'superAdminUpdate'])->name('super-admin.component.update');
+    Route::delete('super-admin/component/{id}', [ComponentController::class, 'destroy'])->name('super-admin.component.destroy');
+    Route::get('super-admin/getCategory/{id}', [ComponentController::class, 'category'])->name('super-admin.category');
+    //password
+    Route::get('super-admin/changePassword',[ProfileController::class, 'index']);
+    Route::post('super-admin/changePassword', [ProfileController::class, 'updatePassword'])->name('super-admin.settings.password');
+
+    //logout
     Route::delete('logout', [AuthController::class, 'logout'])->name('logout');
-    Route::get('/year',[YearController::class, 'index']);
-    Route::resource('/year', YearController::class);
-    Route::resource('/category', CategoryController::class);
-    Route::resource('/component', ComponentController::class);
-    Route::get('/component', [ComponentController::class, 'index'])->name('home.component');
-    Route::get('/getCategory/{id}', [ComponentController::class, 'category']);
-    Route::get('/changePassword',[ProfileController::class, 'index'])->name('changePassword');
-    Route::post('/changePassword', [ProfileController::class, 'updatePassword'])->name('settings.password');
 });

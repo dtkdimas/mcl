@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 class ProfileController extends Controller
 {
     public function index(){
-        return view('account.password');
+        return view('super-admin.password');
     }
 
     public function updatePassword(Request $request)

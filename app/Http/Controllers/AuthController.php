@@ -40,25 +40,43 @@ class AuthController extends Controller
 
     public function loginPost(Request $request)
     {
-        $credetials = [
+        $credentials = [
             'email' => $request->email,
             'password' => $request->password,
         ];
 
         $data = $request->all();
 
-        if(Auth::attempt($credetials)){
-            if(isset($data['remember'])&&!empty($data['remember'])){
-                setcookie('email',$data['email'], time()+2592000);
-                setcookie('password',$data['password'], time()+2592000);
+        if (Auth::attempt($credentials)) {
+            // Check if the user is active
+            if (Auth::user()->active === 1) {
+                // Check if the user is an admin or super admin
+                if (Auth::user()->role === 'admin') {
+                    if (isset($data['remember']) && !empty($data['remember'])) {
+                        setcookie('email', $data['email'], time() + 2592000);
+                        setcookie('password', $data['password'], time() + 2592000);
+                    } else {
+                        setcookie('email', '');
+                        setcookie('password', '');
+                    }
+                    return redirect()->route('admin.dashboard');
+                } elseif (Auth::user()->role === 'super-admin') {
+                    if (isset($data['remember']) && !empty($data['remember'])) {
+                        setcookie('email', $data['email'], time() + 2592000);
+                        setcookie('password', $data['password'], time() + 2592000);
+                    } else {
+                        setcookie('email', '');
+                        setcookie('password', '');
+                    }
+                    return redirect()->route('super-admin.dashboard');
+                }
             } else {
-                setcookie('email','');
-                setcookie('password','');
+                Auth::logout();
+                return back()->with('error', 'Account not active');
             }
-
-            return redirect('/home');
+        } else {
+            return back()->with('error', 'Incorrect email or password');
         }
-        return back()->with('error', 'Incorrect email or password');
     }
 
     public function logout()

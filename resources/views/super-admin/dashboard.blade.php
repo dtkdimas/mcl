@@ -1,5 +1,5 @@
-@extends('layout.app')
-@section('title', 'dashboard')
+@extends('super-admin.app')
+@section('title', 'Super Admin - Dashboard')
 @section('content')
     <div class="page-inner">
         <!-- Page Heading -->

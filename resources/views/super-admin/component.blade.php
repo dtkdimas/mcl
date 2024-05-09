@@ -1,5 +1,5 @@
-@extends('layout.app')
-@section('title', 'Component')
+@extends('super-admin.app')
+@section('title', 'Super Admin - Component')
 @section('content')
     <div class="page-inner">
         <!-- Page Heading -->
@@ -32,7 +32,7 @@
                     <h4 class="card-header">Component</h4>
                     <div class="card-body">
                         <div class="card-title">
-                            <a href="{{ route('component.create') }}" class="btn btn-primary btn-sm">
+                            <a href="{{ route('super-admin.component.create') }}" class="btn btn-primary btn-sm">
                                 <svg class="align-top" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                     stroke-linecap="round" stroke-linejoin="round"
@@ -69,7 +69,7 @@
                                                 <td>{{ $item->created_at }}</td>
                                                 <td>{{ $item->updated_at }}</td>
                                                 <td class="d-flex gap-2">
-                                                    <a href="{{ route('component.edit', $item->id) }}"
+                                                    <a href="{{ route('super-admin.component.edit', $item->id) }}"
                                                         class="btn btn-sm d-flex align-items-center">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="20"
                                                             height="20" viewBox="0 0 24 24" fill="none"
@@ -117,7 +117,7 @@
             tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
-                    <form action="{{ url('component/' . $item->id) }}" method="post">
+                    <form action="{{ url('super-admin/component/' . $item->id) }}" method="post">
                         @method('DELETE')
                         @csrf
                         <div class="modal-header">

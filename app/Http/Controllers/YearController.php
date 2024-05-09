@@ -10,9 +10,16 @@ use Illuminate\Support\Facades\DB;
 
 class YearController extends Controller
 {
-    public function index()
+    public function superAdminIndex()
     {
-        return view('home.year', [
+        return view('super-admin.year', [
+            'year' => Year::latest()->get()
+        ]);
+    }
+
+    public function adminIndex()
+    {
+        return view('admin.year', [
             'year' => Year::latest()->get()
         ]);
     }
