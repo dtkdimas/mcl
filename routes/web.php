@@ -65,7 +65,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('admin/changePassword',[ProfileController::class, 'adminIndex']);
     Route::post('admin/changePassword', [ProfileController::class, 'updatePassword'])->name('admin.settings.password');
     //logout
-    Route::delete('logout', [AuthController::class, 'logout'])->name('logout');
+    Route::delete('admin/logout', [AuthController::class, 'logout'])->name('admin.logout');
 });
 
 Route::group(['middleware' => 'super-admin'], function () {
@@ -96,5 +96,5 @@ Route::group(['middleware' => 'super-admin'], function () {
     Route::get('super-admin/changePassword',[ProfileController::class, 'superAdminIndex']);
     Route::post('super-admin/changePassword', [ProfileController::class, 'updatePassword'])->name('super-admin.settings.password');
     //logout
-    Route::delete('logout', [AuthController::class, 'logout'])->name('logout');
+    Route::delete('super-admin/logout', [AuthController::class, 'logout'])->name('super-admin.logout');
 });

@@ -92,7 +92,7 @@
                             <span class="hide-menu">ACCOUNT</span>
                         </li>
                         <li class="sidebar-item">
-                            <form action="{{ route('logout') }}"method="POST">
+                            <form action="{{ route('admin.logout') }}"method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button class="sidebar-link sidebar-logout" aria-expanded="false" type="submit">
