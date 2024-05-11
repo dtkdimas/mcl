@@ -29,10 +29,12 @@
                     </a>
                 </div>
             @endif
-            @if (Session::has('error'))
+            @if ($errors->any())
                 <div class="alert alert-danger alert-dismissible fade show d-flex justify-content-between"
                     role="alert">
-                    {{ Session::get('error') }}
+                    @foreach ($errors->all() as $error)
+                        {{ $error }}
+                    @endforeach
                     <a href="" class="close" data-bs-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </a>

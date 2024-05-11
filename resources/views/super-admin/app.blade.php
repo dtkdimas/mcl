@@ -83,6 +83,13 @@
                             <a class="sidebar-link" href="{{ url('super-admin/changePassword') }}"
                                 aria-expanded="false">
                                 <span>
+                                    <i class="ti ti-user"></i>
+                                </span>
+                                <span class="hide-menu">Admin</span>
+                            </a>
+                            <a class="sidebar-link" href="{{ url('super-admin/changePassword') }}"
+                                aria-expanded="false">
+                                <span>
                                     <i class="ti ti-lock"></i>
                                 </span>
                                 <span class="hide-menu">Password</span>
