@@ -80,13 +80,14 @@
                             <span class="hide-menu">SETTINGS</span>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="{{ url('super-admin/changePassword') }}"
-                                aria-expanded="false">
+                            <a class="sidebar-link" href="{{ url('super-admin/adminAccount') }}" aria-expanded="false">
                                 <span>
                                     <i class="ti ti-user"></i>
                                 </span>
                                 <span class="hide-menu">Admin</span>
                             </a>
+                        </li>
+                        <li class="sidebar-item">
                             <a class="sidebar-link" href="{{ url('super-admin/changePassword') }}"
                                 aria-expanded="false">
                                 <span>

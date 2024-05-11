@@ -10,6 +10,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SuperAdminController;
+use App\Http\Controllers\AdminAccountController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -89,6 +90,8 @@ Route::group(['middleware' => 'super-admin'], function () {
     Route::put('super-admin/component/{id}', [ComponentController::class, 'superAdminUpdate'])->name('super-admin.component.update');
     Route::delete('super-admin/component/{id}', [ComponentController::class, 'destroy'])->name('super-admin.component.destroy');
     Route::get('super-admin/getCategory/{id}', [ComponentController::class, 'category'])->name('super-admin.category');
+    //adminAccount
+    Route::get('super-admin/adminAccount', [AdminAccountController::class, 'index'])->name('super-admin.adminAccount');
     //password
     Route::get('super-admin/changePassword',[ProfileController::class, 'superAdminIndex']);
     Route::post('super-admin/changePassword', [ProfileController::class, 'updatePassword'])->name('super-admin.settings.password');
