@@ -38,7 +38,7 @@ Route::group(['middleware' => 'guest'], function () {
     Route::post('/reset-password',[PasswordController::class, 'resetPassword'])->name('password.update');
 });
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'admin'], function () {
     // Admin Dashboard
     Route::get('admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
     //year
@@ -63,7 +63,11 @@ Route::group(['middleware' => 'auth'], function () {
     //password
     Route::get('admin/changePassword',[ProfileController::class, 'adminIndex']);
     Route::post('admin/changePassword', [ProfileController::class, 'updatePassword'])->name('admin.settings.password');
+    //logout
+    Route::delete('logout', [AuthController::class, 'logout'])->name('logout');
+});
 
+Route::group(['middleware' => 'super-admin'], function () {
     // Super Admin Dashboard
     Route::get('super-admin/dashboard', [SuperAdminController::class, 'index'])->name('super-admin.dashboard');
     //year
@@ -88,7 +92,6 @@ Route::group(['middleware' => 'auth'], function () {
     //password
     Route::get('super-admin/changePassword',[ProfileController::class, 'superAdminIndex']);
     Route::post('super-admin/changePassword', [ProfileController::class, 'updatePassword'])->name('super-admin.settings.password');
-
     //logout
     Route::delete('logout', [AuthController::class, 'logout'])->name('logout');
 });
