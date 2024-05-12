@@ -92,6 +92,9 @@ Route::group(['middleware' => 'super-admin'], function () {
     Route::get('super-admin/getCategory/{id}', [ComponentController::class, 'category'])->name('super-admin.category');
     //adminAccount
     Route::get('super-admin/adminAccount', [AdminAccountController::class, 'index'])->name('super-admin.adminAccount');
+    Route::post('super-admin/adminAccount', [AdminAccountController::class, 'store'])->name('super-admin.adminAccount.store');
+    Route::put('super-admin/adminAccount/{id}', [AdminAccountController::class, 'update'])->name('super-admin.adminAccount.update');
+    Route::delete('super-admin/adminAccount/{id}', [AdminAccountController::class, 'delete'])->name('super-admin.adminAccount.delete');
     //password
     Route::get('super-admin/changePassword',[ProfileController::class, 'superAdminIndex']);
     Route::post('super-admin/changePassword', [ProfileController::class, 'updatePassword'])->name('super-admin.settings.password');

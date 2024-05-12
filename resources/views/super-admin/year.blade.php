@@ -195,7 +195,6 @@
             </div>
         </div>
     @endforeach
-    </div>
     <!-- End of Page Wrapper -->
 @endsection
 

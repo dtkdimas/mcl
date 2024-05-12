@@ -36,7 +36,7 @@
         @endif
 
         <div class="card shadow mb-4">
-            <h4 class="card-header">Accounts</h4>
+            <h4 class="card-header">Admin Accounts</h4>
             <div class="card-body">
                 <div class="card-title">
                     <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#createModal">
@@ -112,4 +112,119 @@
             </div>
         </div>
     </div>
+
+    <!-- Create Modal-->
+    <div class="modal fade" id="createModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <form action="{{ route('super-admin.adminAccount.store') }}" method="POST">
+                    @csrf
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Create new admin account</h1>
+                        <a href="" class="close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </a>
+                    </div>
+                    <div class="modal-body">
+                        <label for="name">Input name</label>
+                        <span class="text-danger">*</span>
+                        <input type="text" class="form-control mb-3" name="name" id="name"
+                            value="{{ old('name') }}">
+                        <label for="email">Input email</label>
+                        <span class="text-danger">*</span>
+                        <input type="email" class="form-control mb-3" name="email" id="email"
+                            value="{{ old('email') }}">
+                        <label for="password">Input password</label>
+                        <span class="text-danger">*</span>
+                        <input type="password" class="form-control mb-3" name="password" id="password">
+                        <label for="password">Input password confirmation</label>
+                        <span class="text-danger">*</span>
+                        <input type="password" class="form-control mb-3" name="password_confirmation" id="password">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button class="btn btn-primary" type="submit">Create</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Update Modal-->
+    @foreach ($admin as $item)
+        <div class="modal fade" id="editModal-{{ $item->id }}" data-bs-backdrop="static" data-bs-keyboard="false"
+            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <form action="{{ url('super-admin/adminAccount/' . $item->id) }}" method="post">
+                        @method('PUT')
+                        @csrf
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Update admin account</h1>
+                            <a href="" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </a>
+                        </div>
+                        <div class="modal-body">
+                            <label for="role">Set role</label>
+                            <span class="text-danger">*</span>
+                            <select name="role" id="role" class="form-control mb-3">
+                                @if ($item->role == 'admin')
+                                    <option value="{{ $item->role }}" selected>{{ $item->role }}</option>
+                                    <option value="super-admin">super-admin</option>
+                                @elseif($item->role == 'super-admin')
+                                    <option value="{{ $item->role }}" selected>{{ $item->role }}</option>
+                                    <option value="admin">admin</option>
+                                @endif
+                            </select>
+                            <label for="active">Set active account</label>
+                            <span class="text-danger">*</span>
+                            <select name="active" id="active" class="form-control">
+                                @if ($item->active == 1)
+                                    <option value="{{ $item->active }}" selected>Yes</option>
+                                    <option value="0">No</option>
+                                @elseif($item->active == 0)
+                                    <option value="{{ $item->active }}" selected>No</option>
+                                    <option value="1">Yes</option>
+                                @endif
+                            </select>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button class="btn btn-warning" type="submit">Edit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    @endforeach
+
+    <!-- Delete Modal-->
+    @foreach ($admin as $item)
+        <div class="modal fade" id="deleteModal-{{ $item->id }}" data-bs-backdrop="static" data-bs-keyboard="false"
+            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <form action="{{ url('super-admin/adminAccount/' . $item->id) }}" method="post">
+                        @method('DELETE')
+                        @csrf
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Delete account</h1>
+                            <a href="" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </a>
+                        </div>
+                        <div class="modal-body">
+                            Are you sure want to delete <b>{{ $item->email }}</b> from table?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button class="btn btn-danger" type="submit">Delete</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    @endforeach
 @endsection
