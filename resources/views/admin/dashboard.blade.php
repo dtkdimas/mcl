@@ -8,7 +8,7 @@
 
         {{-- page content  --}}
         <div class="row">
-            <div class="col-sm-6 col-md-3">
+            <div class="col-sm-6 col-md-4">
                 <div class="card">
                     <p class="card-header fw-semibold">Total Components</p>
                     <div class="card-body">
@@ -16,7 +16,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-3">
+            <div class="col-sm-6 col-md-4">
                 <div class="card">
                     <p class="card-header fw-semibold">Total Categories</p>
                     <div class="card-body">
@@ -24,7 +24,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-md-3">
+            <div class="col-sm-6 col-md-4">
                 <div class="card">
                     <p class="card-header fw-semibold">Total Version</p>
                     <div class="card-body">
@@ -32,14 +32,6 @@
                     </div>
                 </div>
             </div>
-            {{-- <div class="col-sm-6 col-md-3">
-                <div class="card">
-                    <p class="card-header fw-semibold">Total Admin</p>
-                    <div class="card-body">
-                        <h4 class="">{{ $user }}</h4>
-                    </div>
-                </div>
-            </div> --}}
         </div>
         <div class="row">
             <div class="col-md-12">
