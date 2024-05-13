@@ -48,7 +48,7 @@
                     <input type="password" name="password" id="password" placeholder="Password"
                         @if (isset($_COOKIE['password'])) value="{{ $_COOKIE['password'] }}" @endif required>
                 </div>
-                <div class="remember-forgot d-flex justify-content-between align-items-center">
+                <div class="remember-forgot d-flex justify-content-between align-items-center mb-4">
                     <label class="d-flex align-items-center cursor-pointer"><input type="checkbox" name="remember"
                             class="cursor-pointer" @if (isset($_COOKIE['email'])) checked @endif>
                         Remember me for 30 days</label>

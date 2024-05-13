@@ -58,8 +58,13 @@
                 <div class="mb-3">
                     <input type="email" name="email" id="email" placeholder="Email address" required>
                 </div>
-                <button type="submit" class="btn btn-primary">OK</button>
+                <div class="mb-3">
+                    <button class="">OK</button>
+                </div>
             </form>
+            <div class="register text-center">
+                {{-- <p>Back to login page? <a href="{{ route('login') }}" class="register-link">Login</a></p> --}}
+            </div>
         </div>
     </div>
 

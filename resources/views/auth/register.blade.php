@@ -58,7 +58,7 @@
                         <span class="text-danger">{{ $errors->first('password') }}</span>
                     @endif
                 </div>
-                <div class="mb-3">
+                <div class="mb-4">
                     <button class="">Register</button>
                 </div>
             </form>
