@@ -19,14 +19,19 @@ class PasswordController extends Controller
 
     public function forgotPassword(Request $request){
         $request->validate(['email' => 'required|email|exists:users,email']);
-        
+
+        $email = $request->email;
         $token = Str::random(64);
 
-        DB::table('password_reset_tokens')->insert([
-                'email' => $request->email,
-                'token' => $token,
-                'created_at' => Carbon::now()
-        ]);
+        if (!DB::table('password_reset_tokens')->where('email', $email)->exists()) {
+            DB::table('password_reset_tokens')->insert([
+                    'email' => $email,
+                    'token' => $token,
+                    'created_at' => Carbon::now()
+            ]);
+        } else {
+            return back()->with('error', 'Token already exists');
+        }
 
         Mail::send('emails.resetPassword', ['token' => $token], function ($message) use($request){
             $message->to($request->email);
