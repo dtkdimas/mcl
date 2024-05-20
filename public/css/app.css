@@ -7,10 +7,6 @@ a {
     text-decoration: none !important;
 }
 
-.brand-logo {
-    border-bottom: 1px solid rgb(229, 234, 239);
-}
-
 .logo-name {
     margin-bottom: 0;
     font-size: 1.5rem;
@@ -38,7 +34,7 @@ a {
 }
 
 .sidebar-logout:hover {
-    background-color: rgba(93, 135, 255, 0.1) !important;
+    background-color: #f0e9fe !important;
 }
 
 .card-title {
