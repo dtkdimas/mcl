@@ -9,11 +9,11 @@
     {{-- <link rel="icon" href="{{ asset('assets/img/icon.ico') }}" type="image/x-icon" /> --}}
 
     <!-- CSS Files -->
-    <link rel="stylesheet" href="{{ asset('assets/css/styles.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/styles.min.css') }}?v2" />
 
     {{-- import css --}}
     @yield('css')
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}?v2">
 </head>
 
 <body>
