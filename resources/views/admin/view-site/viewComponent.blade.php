@@ -337,7 +337,7 @@
 
         function selectInput(year, category, id, component) {
             window.location.href =
-                "{{ route('view.component', ['year' => ':year', 'category' => ':category', 'id' => ':id', 'component' => ':component']) }}"
+                "{{ route('admin.view.component', ['year' => ':year', 'category' => ':category', 'id' => ':id', 'component' => ':component']) }}"
                 .replace(':year', year)
                 .replace(':category', category)
                 .replace(':id', id)

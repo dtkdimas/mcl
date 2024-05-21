@@ -217,7 +217,7 @@
                                                     @foreach ($category->components as $component)
                                                         <ul>
                                                             <li>
-                                                                <a href="{{ route('view.component', ['year' => $year->year, 'category' => $category->category, 'id' => $component->id, 'component' => $component->component]) }}"
+                                                                <a href="{{ route('super-admin.view.component', ['year' => $year->year, 'category' => $category->category, 'id' => $component->id, 'component' => $component->component]) }}"
                                                                     class="link{{ $componentId == $component->id ? ' active' : '' }}">{{ $component->component }}</a>
                                                             </li>
                                                         </ul>
@@ -337,7 +337,7 @@
 
         function selectInput(year, category, id, component) {
             window.location.href =
-                "{{ route('view.component', ['year' => ':year', 'category' => ':category', 'id' => ':id', 'component' => ':component']) }}"
+                "{{ route('super-admin.view.component', ['year' => ':year', 'category' => ':category', 'id' => ':id', 'component' => ':component']) }}"
                 .replace(':year', year)
                 .replace(':category', category)
                 .replace(':id', id)
