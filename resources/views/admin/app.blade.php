@@ -48,7 +48,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="{{ route('admin.view') }}" target="blank"
+                            <a class="sidebar-link-view" href="{{ route('admin.view') }}" target="blank"
                                 aria-expanded="false">
                                 <span>
                                     <i class="ti ti-browser"></i>

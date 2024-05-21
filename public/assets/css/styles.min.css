@@ -16482,7 +16482,8 @@ fieldset:disabled .btn {
 .nav-small-cap .nav-small-cap-icon {
     display: none;
 }
-.sidebar-nav ul .sidebar-item .sidebar-link {
+.sidebar-nav ul .sidebar-item .sidebar-link,
+.sidebar-nav ul .sidebar-item .sidebar-link-view {
     color: #2a3547;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -16500,17 +16501,20 @@ fieldset:disabled .btn {
     gap: 15px;
     font-weight: 400;
 }
-.sidebar-nav ul .sidebar-item .sidebar-link span:first-child {
+.sidebar-nav ul .sidebar-item .sidebar-link span:first-child,
+.sidebar-nav ul .sidebar-item .sidebar-link-view span:first-child {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
 }
-.sidebar-nav ul .sidebar-item .sidebar-link .ti {
+.sidebar-nav ul .sidebar-item .sidebar-link .ti,
+.sidebar-nav ul .sidebar-item .sidebar-link-view .ti {
     -ms-flex-negative: 0;
     flex-shrink: 0;
     font-size: 21px;
 }
-.sidebar-nav ul .sidebar-item .sidebar-link:hover {
+.sidebar-nav ul .sidebar-item .sidebar-link:hover,
+.sidebar-nav ul .sidebar-item .sidebar-link-view:hover {
     background-color: #f0e9fe;
     color: #9747ff;
 }
