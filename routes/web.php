@@ -10,6 +10,7 @@ use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\AdminAccountController;
+use App\Http\Controllers\ViewSiteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,8 +40,11 @@ Route::group(['middleware' => 'guest'], function () {
 });
 
 Route::group(['middleware' => 'admin'], function () {
-    // Admin Dashboard
+    //Admin Dashboard
     Route::get('admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+    //View
+    Route::get('/admin/view', [ViewSiteController::class, 'AdminIndex'])->name('admin.view');
+    Route::get('/admin/component/{year}/{category}/{id}/{component}', [ViewSiteController::class, 'AdminShow'])->name('admin.view.component');
     //year
     Route::get('/admin/year', [YearController::class, 'adminIndex'])->name('admin.year.index');
     Route::post('/admin/year', [YearController::class, 'store'])->name('admin.year.store');
@@ -68,8 +72,11 @@ Route::group(['middleware' => 'admin'], function () {
 });
 
 Route::group(['middleware' => 'super-admin'], function () {
-    // Super Admin Dashboard
+    //Super Admin Dashboard
     Route::get('super-admin/dashboard', [SuperAdminController::class, 'index'])->name('super-admin.dashboard');
+    //View
+    Route::get('/super-admin/view', [ViewSiteController::class, 'superAdminIndex'])->name('super-admin.view');
+    Route::get('/super-admin/component/{year}/{category}/{id}/{component}', [ViewSiteController::class, 'superAdminShow'])->name('super-admin.view.component');
     //year
     Route::get('/super-admin/year', [YearController::class, 'superAdminIndex'])->name('super-admin.year.index');
     Route::post('/super-admin/year', [YearController::class, 'store'])->name('super-admin.year.store');
