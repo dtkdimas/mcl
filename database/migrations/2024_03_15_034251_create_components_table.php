@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('category_id')->index()->constrained();
             $table->string('component');
             $table->string('iframe_src');
-            $table->string('note')->nullable();
+            $table->text('note')->nullable();
             $table->timestamps();
         });
     }
