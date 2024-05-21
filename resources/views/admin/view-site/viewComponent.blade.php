@@ -236,8 +236,8 @@
         <main class="bd-main order-1 iframe-container">
             <h1 id="iframe-header" class="fw-bold">{{ $componentName }}</h1>
             <div id="iframe-text" data-note="{{ $note }}"></div>
-            <iframe id="iframe-content" src="{{ $iframe_src }}" width="100%" height="500"
-                frameborder="0"></iframe>
+            <iframe id="iframe-content" src="{{ $iframe_src }}" width="100%" height="500" frameborder="0"
+                loading="lazy"></iframe>
         </main>
     </div>
 
