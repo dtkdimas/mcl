@@ -3557,20 +3557,20 @@ fieldset:disabled .btn {
     --bs-btn-disabled-border-color: #9747ff;
 }
 .btn-secondary {
-    --bs-btn-color: #fff;
-    --bs-btn-bg: #49beff;
-    --bs-btn-border-color: #49beff;
-    --bs-btn-hover-color: #fff;
-    --bs-btn-hover-bg: #3ea2d9;
-    --bs-btn-hover-border-color: #3a98cc;
-    --bs-btn-focus-shadow-rgb: 100, 200, 255;
-    --bs-btn-active-color: #fff;
-    --bs-btn-active-bg: #3a98cc;
-    --bs-btn-active-border-color: #378fbf;
+    --bs-btn-color: #000;
+    --bs-btn-bg: #f8f9fa;
+    --bs-btn-border-color: #f8f9fa;
+    --bs-btn-hover-color: #000;
+    --bs-btn-hover-bg: #d3d4d5;
+    --bs-btn-hover-border-color: #c6c7c8;
+    --bs-btn-focus-shadow-rgb: 211, 212, 213;
+    --bs-btn-active-color: #000;
+    --bs-btn-active-bg: #c6c7c8;
+    --bs-btn-active-border-color: #babbbc;
     --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-    --bs-btn-disabled-color: #fff;
-    --bs-btn-disabled-bg: #49beff;
-    --bs-btn-disabled-border-color: #49beff;
+    --bs-btn-disabled-color: #000;
+    --bs-btn-disabled-bg: #f8f9fa;
+    --bs-btn-disabled-border-color: #f8f9fa;
 }
 .btn-success {
     --bs-btn-color: #fff;
