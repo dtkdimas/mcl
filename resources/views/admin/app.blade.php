@@ -122,10 +122,10 @@
         <!--  Main wrapper -->
         <div class="body-wrapper">
             <!--  Header Start -->
-            <header class="app-header">
+            <header class="app-header ps-0">
                 <nav class="navbar navbar-expand-lg navbar-light">
                     <ul class="navbar-nav">
-                        <li class="nav-item d-block d-xl-none">
+                        <li class="nav-item d-block">
                             <a class="nav-link sidebartoggler nav-icon-hover" id="headerCollapse"
                                 href="javascript:void(0)">
                                 <i class="ti ti-menu-2"></i>
@@ -160,6 +160,7 @@
     <script src="{{ asset('assets/libs/apexcharts/dist/apexcharts.min.js') }}"></script>
     <script src="{{ asset('assets/libs/simplebar/dist/simplebar.js') }}"></script>
     <script src="{{ asset('assets/js/dashboard.js') }}"></script>
+    <script src="{{ asset('assets/js/theme.js') }}"></script>
     <script src="https://cdn.datatables.net/2.0.5/js/dataTables.js"></script>
 
     @yield('js')
