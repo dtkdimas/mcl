@@ -26,7 +26,7 @@
             <div>
                 <div class="brand-logo d-flex align-items-center justify-content-between">
                     <a href="{{ url('admin/dashboard') }}" class="text-nowrap logo-img">
-                        <img src="{{ asset('assets/dashboard-logo.png') }}" style="height: 35px" />
+                        <img src="{{ asset('assets/dashboard-logo.png') }}" style="height: 30px" />
                     </a>
                     <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
                         <i class="ti ti-x fs-8"></i>
