@@ -68,14 +68,14 @@
                                             <td>{{ $no++ }}</td>
                                             <td>{{ $item->causer->name }}</td>
                                             <td>{{ $item->event }}</td>
-                                            <td>
+                                            <td style="max-width:100px">
                                                 @if (@is_array($item->changes['old']))
                                                     @foreach ($item->changes['old'] as $key => $itemChange)
                                                         {{ $key }} : {{ $itemChange }} </br>
                                                     @endforeach
                                                 @endif
                                             </td>
-                                            <td>
+                                            <td style="max-width:100px">
                                                 @if (@is_array($item->changes['attributes']))
                                                     @foreach ($item->changes['attributes'] as $key => $itemChange)
                                                         {{ $key }} : {{ $itemChange }} </br>
