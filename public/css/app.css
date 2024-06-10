@@ -29,14 +29,17 @@ a {
     background-color: white;
 }
 
-.sidebar-logout:hover {
-    background-color: #f0e9fe !important;
-}
-
 .card-title {
     margin-bottom: 1rem;
     padding-bottom: 1rem;
     border-bottom: 1px solid #d8d8d8;
+}
+
+.card-title a {
+    display: flex;
+    gap: 6px;
+    width: min-content;
+    align-items: center;
 }
 
 div.dt-container div.dt-layout-row {

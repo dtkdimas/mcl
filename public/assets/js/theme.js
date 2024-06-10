@@ -41,9 +41,9 @@ $(function () {
     // fixed header
     $(window).scroll(function () {
         if ($(window).scrollTop() >= 60) {
-            $(".app-header").addClass("shadow-sm");
+            $(".topbar").addClass("shadow-sm");
         } else {
-            $(".app-header").removeClass("shadow-sm");
+            $(".topbar").removeClass("shadow-sm");
         }
     });
 });
