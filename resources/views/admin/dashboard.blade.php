@@ -47,8 +47,8 @@
                                         <th>No</th>
                                         <th>User</th>
                                         <th>Event</th>
-                                        <th>Before</th>
-                                        <th>After</th>
+                                        <th style="max-width:100px">Before</th>
+                                        <th style="max-width:100px">After</th>
                                         <th>Description</th>
                                         <th>Log At</th>
                                     </tr>
