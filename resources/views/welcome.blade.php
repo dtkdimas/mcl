@@ -25,7 +25,7 @@
                 <div class="container mycontainer">
                     <div class="row">
                         <div class="col-12">
-                            <h1>Microsite Component Library</h1>
+                            <h1>Microsite Component Library - Dimas update</h1>
                             <p>Standards microsite component sets used in projects</p>
                         </div>
                     </div>
