@@ -25,7 +25,7 @@
                 <div class="container mycontainer">
                     <div class="row">
                         <div class="col-12">
-                            <h1>Microsite Component Library - Dimas update</h1>
+                            <h1>Microsite Component Library</h1>
                             <p>Standards microsite component sets used in projects</p>
                         </div>
                     </div>
@@ -224,14 +224,17 @@
                 @endforeach
             </div>
         </aside>
-        <main class="bd-main order-1 iframe-container">
-            <h1 id="iframe-header" class="fw-bold">Develop rapid and adaptable microsite using Microsite Component
-                Library.</h1>
-            <div id="iframe-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maiores ipsam totam sequi
-                facilis dolores, dolorem dolore nostrum ab velit, quibusdam sed voluptatibus, aliquid praesentium cum
-                ullam explicabo culpa. Reiciendis deleniti ab alias optio fuga libero molestias eos. Velit explicabo
-                distinctio, laborum aspernatur iusto, odio eius ad delectus vero magnam itaque?</div>
-            <h1 class="">Get started with Microsite Component Library</h1>
+        <main class="bd-main order-1 getStarted">
+            <div class="circle circle1"></div>
+            <div class="circle circle2"></div>
+            <div class="circle circle3"></div>
+            <div class="circle circle4"></div>
+            <h1 class="getStarted-title mx-auto">Make quick, responsive websites effortlessly with Microsite Component
+                Library</h1>
+            <p class="getStarted-text mx-auto">
+                A robust, extensible, and feature-rich frontend toolkit. Construct and customize with Sass, utilize the
+                prebuilt grid system and components, and bring your projects to life with powerful JavaScript plugins.
+            </p>
         </main>
     </div>
 
