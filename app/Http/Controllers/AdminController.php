@@ -6,7 +6,6 @@ use App\Models\User;
 use App\Models\Year;
 use App\Models\Category;
 use App\Models\Component;
-use Illuminate\Http\Request;
 use Spatie\Activitylog\Models\Activity;
 
 class AdminController extends Controller
@@ -17,7 +16,7 @@ class AdminController extends Controller
         $categoryCount = Category::count();
         $yearCount = Year::count();
         $userCount = User::count();
-        return view('admin.dashboard',[
+        return view('admin.dashboard', [
             'user' => $userCount,
             'year' => $yearCount,
             'category' => $categoryCount,
