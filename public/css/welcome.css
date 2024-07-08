@@ -329,7 +329,7 @@ li {
 .circle1 {
     background-image: radial-gradient(
         circle,
-        rgba(13, 110, 253, 0.5),
+        rgba(13, 110, 253, 0.3),
         transparent 70%
     );
     top: 0%;
@@ -339,7 +339,7 @@ li {
 .circle2 {
     background-image: radial-gradient(
         circle,
-        rgba(255, 209, 42, 0.5),
+        rgba(255, 209, 42, 0.3),
         transparent 70%
     );
     top: -3%;
@@ -349,7 +349,7 @@ li {
 .circle3 {
     background-image: radial-gradient(
         circle,
-        rgba(112, 44, 249, 0.5),
+        rgba(112, 44, 249, 0.3),
         transparent 70%
     );
     top: 8%;
@@ -359,7 +359,7 @@ li {
 .circle4 {
     background-image: radial-gradient(
         circle,
-        rgba(214, 51, 132, 0.5),
+        rgba(214, 51, 132, 0.3),
         transparent 70%
     );
     top: 14%;
