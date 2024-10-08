@@ -24,19 +24,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', [WelcomeController::class, 'index'])->middleware('redirect.if.authenticated');
+
 Route::group(['middleware' => 'guest'], function () {
-    Route::get('/', [WelcomeController::class, 'index']);
     Route::get('/register', [AuthController::class, 'register'])->name('register');
     Route::post('/register', [AuthController::class, 'registerPost'])->name('register');
     Route::get('/login', [AuthController::class, 'login'])->name('login');
     Route::post('/login', [AuthController::class, 'loginPost'])->name('login');
     Route::get('/component/{year}/{category}/{id}/{component}', [WelcomeController::class, 'show'])->name('view.component');
-    
+
     //reset password
-    Route::get('/forgot-password',[PasswordController::class, 'index'])->name('password.request');
-    Route::post('/forgot-password',[PasswordController::class, 'forgotPassword'])->name('password.email');
-    Route::get('/reset-password/{token}',[PasswordController::class, 'resetPasswordIndex'])->name('password.reset');
-    Route::post('/reset-password',[PasswordController::class, 'resetPassword'])->name('password.update');
+    Route::get('/forgot-password', [PasswordController::class, 'index'])->name('password.request');
+    Route::post('/forgot-password', [PasswordController::class, 'forgotPassword'])->name('password.email');
+    Route::get('/reset-password/{token}', [PasswordController::class, 'resetPasswordIndex'])->name('password.reset');
+    Route::post('/reset-password', [PasswordController::class, 'resetPassword'])->name('password.update');
 });
 
 Route::group(['middleware' => 'admin'], function () {
@@ -65,7 +66,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::delete('admin/component/{id}', [ComponentController::class, 'destroy'])->name('admin.component.destroy');
     Route::get('admin/getCategory/{id}', [ComponentController::class, 'category'])->name('admin.category');
     //password
-    Route::get('admin/changePassword',[ProfileController::class, 'adminIndex']);
+    Route::get('admin/changePassword', [ProfileController::class, 'adminIndex']);
     Route::post('admin/changePassword', [ProfileController::class, 'updatePassword'])->name('admin.settings.password');
     //logout
     Route::delete('admin/logout', [AuthController::class, 'logout'])->name('admin.logout');
@@ -102,7 +103,7 @@ Route::group(['middleware' => 'super-admin'], function () {
     Route::put('super-admin/adminAccount/{id}', [AdminAccountController::class, 'update'])->name('super-admin.adminAccount.update');
     Route::delete('super-admin/adminAccount/{id}', [AdminAccountController::class, 'delete'])->name('super-admin.adminAccount.delete');
     //password
-    Route::get('super-admin/changePassword',[ProfileController::class, 'superAdminIndex']);
+    Route::get('super-admin/changePassword', [ProfileController::class, 'superAdminIndex']);
     Route::post('super-admin/changePassword', [ProfileController::class, 'updatePassword'])->name('super-admin.settings.password');
     //logout
     Route::delete('super-admin/logout', [AuthController::class, 'logout'])->name('super-admin.logout');

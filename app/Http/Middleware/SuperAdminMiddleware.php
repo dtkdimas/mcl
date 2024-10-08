@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class SuperAdminMiddleware
 {
@@ -16,10 +16,8 @@ class SuperAdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::check())
-        {
-            if(Auth::user()->role === 'super-admin')
-            {
+        if (Auth::check()) {
+            if (Auth::user()->role === 'super-admin') {
                 return $next($request);
             } else {
                 Auth::logout();
